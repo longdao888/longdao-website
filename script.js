@@ -8,6 +8,18 @@ let slideInterval = null;
 const SLIDE_DURATION = 5000; // 5秒切换
 
 function initCarousel() {
+  // 图片加载后校准宽高比
+  const img = document.querySelector('.carousel-img');
+  if (img) {
+    const setRatio = () => {
+      const ratio = (img.naturalWidth / img.naturalHeight).toFixed(4);
+      const carousel = document.getElementById('heroCarousel');
+      if (carousel) carousel.style.aspectRatio = ratio;
+    };
+    img.addEventListener('load', setRatio);
+    if (img.complete) setRatio();
+  }
+
   // 启动自动播放
   startAutoPlay();
 
@@ -22,14 +34,16 @@ function initCarousel() {
   let touchStartX = 0;
   let touchEndX = 0;
 
-  carousel.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
+  if (carousel) {
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
 
-  carousel.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  }
 
   function handleSwipe() {
     const diff = touchStartX - touchEndX;
