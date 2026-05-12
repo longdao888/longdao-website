@@ -189,8 +189,8 @@ img { max-width: 100%; }
 .hero-carousel {
   position: relative;
   width: 100%;
-  /* 默认比例占位，图片加载后自动撑开 */
-  aspect-ratio: 16 / 9;
+  /* 按实际图片比例 3277x1279 ≈ 2.56:1 设置，图片加载后 JS 会动态校准 */
+  aspect-ratio: 2.56 / 1;
 }
 
 @media (max-width: 768px) {
