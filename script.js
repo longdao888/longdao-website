@@ -11,25 +11,35 @@ function initCarousel() {
   // 启动自动播放
   startAutoPlay();
 
-  // 检测图片实际比例并自适应
-  const img = document.querySelector('.carousel-img');
-  if (img) {
-    img.onload = function() {
-      const ratio = this.naturalWidth / this.naturalHeight;
-      const carousel = document.getElementById('heroCarousel');
-      if (carousel) {
-        carousel.style.aspectRatio = ratio;
-      }
-    };
-    // 图片可能已缓存，触发一次
-    if (img.complete) img.onload();
-  }
-
   // 鼠标悬停暂停
   const carousel = document.getElementById('heroCarousel');
   if (carousel) {
     carousel.addEventListener('mouseenter', stopAutoPlay);
     carousel.addEventListener('mouseleave', startAutoPlay);
+  }
+
+  // 触摸滑动支持
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  carousel.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
   }
 }
 
