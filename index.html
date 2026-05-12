@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- 预加载关键轮播图 -->
+  <link rel="preload" as="image" href="images/hero-banner-1.webp" imagesrcset="images/hero-banner-1-mobile.webp 768w, images/hero-banner-1.webp 1920w" imagesizes="100vw">
 </head>
 <body>
 
@@ -40,7 +42,15 @@
   <div class="hero-carousel" id="heroCarousel">
     <!-- 轮播项 -->
     <div class="carousel-item active">
-      <img class="carousel-img" src="images/hero-banner-1.png" alt="广州龙到网络科技" />
+      <picture>
+        <!-- 移动端优先加载小图 -->
+        <source media="(max-width: 768px)" srcset="images/hero-banner-1-mobile.webp" type="image/webp">
+        <source media="(max-width: 768px)" srcset="images/hero-banner-1-mobile.webp" type="image/jpeg">
+        <!-- 桌面端使用大图 -->
+        <source srcset="images/hero-banner-1.webp" type="image/webp">
+        <!-- 回退格式 -->
+        <img class="carousel-img" src="images/hero-banner-1.webp" alt="广州龙到网络科技" width="1920" height="749" fetchpriority="high">
+      </picture>
     </div>
   </div>
 
