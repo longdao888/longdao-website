@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>广州龙到网络科技有限公司 - 一体机 | MINI主机 | 商显 | 台式电脑</title>
+  <meta name="description" content="广州龙到网络科技有限公司专业生产一体机电脑、MINI主机、商显、台式电脑，支持OEM/ODM定制服务。" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- 导航栏 -->
+<header id="header" class="header">
+  <div class="container">
+    <div class="nav-brand">
+      <div class="logo">
+        <span class="logo-icon">龙</span>
+        <div class="logo-text">
+          <span class="company-name">广州龙到网络科技</span>
+          <span class="company-sub">LONGDAO NETWORK TECHNOLOGY</span>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-menu" id="navMenu">
+      <a href="#home" class="nav-link active" onclick="scrollToSection('home')">首页</a>
+      <a href="#about" class="nav-link" onclick="scrollToSection('about')">关于我们</a>
+      <a href="#products" class="nav-link" onclick="scrollToSection('products')">产品服务</a>
+      <a href="#contact" class="nav-link" onclick="scrollToSection('contact')">联系我们</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- 首页 Hero 轮播 -->
+<section id="home" class="hero">
+  <div class="hero-carousel" id="heroCarousel">
+    <!-- 轮播项 -->
+    <div class="carousel-item active">
+      <img class="carousel-img" src="images/hero-banner-1.png" alt="广州龙到网络科技" />
+    </div>
+  </div>
+
+  <!-- 轮播箭头 -->
+  <button class="carousel-arrow prev" onclick="prevSlide()">‹</button>
+  <button class="carousel-arrow next" onclick="nextSlide()">›</button>
+
+  <!-- 轮播指示器 -->
+  <div class="carousel-indicators" id="carouselIndicators">
+    <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+  </div>
+</section>
+
+<!-- 首页内容区 -->
+<section class="hero-content-section">
+  <div class="container">
+    <div class="hero-badge">专业 · 创新 · 定制</div>
+    <h1 class="hero-title">
+      智能硬件<span class="highlight">制造专家</span>
+      <br />引领科技新未来
+    </h1>
+    <p class="hero-desc">
+      专注一体机电脑、MINI主机、商业显示器及台式电脑研发制造<br />
+      提供专业 OEM / ODM 定制服务，满足您的个性化需求
+    </p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="scrollToSection('products')">探索产品</button>
+      <button class="btn btn-outline-dark" onclick="scrollToSection('contact')">联系我们</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">年研发经验</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">企业客户</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">产品系列</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">出口国家</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="scrollToSection('about')">
+    <span>向下滚动</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- 核心优势 -->
+<section class="advantages">
+  <div class="container">
+    <div class="adv-grid">
+      <div class="adv-item">
+        <div class="adv-icon">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/><path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>品质保证</h3>
+        <p>严格质量管控体系，通过ISO国际认证，每款产品出厂前经过严格测试</p>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="3" stroke="currentColor" stroke-width="2"/><path d="M17 28l4-8 4 6 3-4 4 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>OEM/ODM定制</h3>
+        <p>支持外观设计、硬件配置、软件系统全面定制，满足品牌商个性化需求</p>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>快速交付</h3>
+        <p>完善的供应链管理，快速响应客户需求，确保准时交货，降低客户等待成本</p>
+      </div>
+      <div class="adv-item">
+        <div class="adv-icon">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M12 36V20l12-8 12 8v16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="20" y="28" width="8" height="8" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>专业服务</h3>
+        <p>资深工程师团队提供全程技术支持，售前咨询到售后维护一站式解决方案</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 关于我们 -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">ABOUT US</span>
+      <h2 class="section-title">关于我们</h2>
+      <p class="section-desc">深耕硬件制造领域，以技术创新驱动企业发展</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-card-main">
+          <div class="about-icon-big">
+            <svg viewBox="0 0 120 120" fill="none">
+              <rect x="10" y="20" width="100" height="70" rx="8" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.3)" stroke-width="2"/>
+              <rect x="20" y="30" width="80" height="50" rx="4" fill="rgba(37,99,235,0.06)"/>
+              <rect x="28" y="38" width="24" height="16" rx="2" fill="rgba(37,99,235,0.2)"/>
+              <rect x="28" y="60" width="64" height="4" rx="2" fill="rgba(37,99,235,0.15)"/>
+              <rect x="28" y="68" width="40" height="4" rx="2" fill="rgba(37,99,235,0.1)"/>
+              <rect x="60" y="38" width="32" height="26" rx="2" fill="rgba(37,99,235,0.15)"/>
+              <rect x="45" y="90" width="30" height="8" rx="2" fill="rgba(37,99,235,0.2)"/>
+              <rect x="30" y="98" width="60" height="4" rx="2" fill="rgba(37,99,235,0.1)"/>
+            </svg>
+          </div>
+          <div class="about-card-info">
+            <span class="about-year">Est. 2014</span>
+            <span class="about-location">📍 广州 · 广东</span>
+          </div>
+        </div>
+        <div class="about-card-side">
+          <div class="side-stat">
+            <span class="s-num">A+</span>
+            <span class="s-label">供应商评级</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <h3>专注智能硬件，铸就品质标杆</h3>
+        <p>广州龙到网络科技有限公司成立于广州，是一家专注于智能硬件研发、生产与销售的高新技术企业。公司主要经营一体机电脑、MINI主机、商业显示器（商显）及台式电脑等产品，并提供专业的OEM/ODM定制服务。</p>
+        <p>经过多年发展，公司已形成完整的产品研发体系和成熟的制造工艺，产品覆盖教育、医疗、零售、金融等多个行业领域，深受国内外客户信赖。</p>
+        <div class="about-features">
+          <div class="feat-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span>自主研发核心技术，持续创新迭代</span>
+          </div>
+          <div class="feat-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span>通过CE、FCC、RoHS等国际权威认证</span>
+          </div>
+          <div class="feat-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span>完善售后服务体系，响应及时高效</span>
+          </div>
+          <div class="feat-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span>产品远销欧美、东南亚等20余个国家和地区</span>
+          </div>
+        </div>
+        <div class="about-certs">
+          <span class="cert-badge">CE认证</span>
+          <span class="cert-badge">FCC认证</span>
+          <span class="cert-badge">RoHS认证</span>
+          <span class="cert-badge">ISO9001</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 产品服务 -->
+<section id="products" class="products">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">PRODUCTS & SERVICES</span>
+      <h2 class="section-title">产品服务</h2>
+      <p class="section-desc">多元化产品线，覆盖商业与个人全场景需求</p>
+    </div>
+    <div class="product-tabs">
+      <button class="tab-btn active" onclick="switchTab('all')">全部产品</button>
+      <button class="tab-btn" onclick="switchTab('aio')">一体机</button>
+      <button class="tab-btn" onclick="switchTab('mini')">MINI主机</button>
+      <button class="tab-btn" onclick="switchTab('display')">商显</button>
+      <button class="tab-btn" onclick="switchTab('desktop')">台式电脑</button>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- 一体机 -->
+      <div class="product-card" data-category="aio">
+        <div class="product-visual aio">
+          <svg viewBox="0 0 160 120" fill="none">
+            <rect x="20" y="10" width="120" height="85" rx="6" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.3)" stroke-width="1.5"/>
+            <rect x="28" y="18" width="104" height="69" rx="3" fill="rgba(37,99,235,0.05)"/>
+            <rect x="35" y="25" width="40" height="28" rx="2" fill="rgba(37,99,235,0.15)"/>
+            <rect x="35" y="57" width="90" height="4" rx="1" fill="rgba(37,99,235,0.12)"/>
+            <rect x="35" y="65" width="65" height="4" rx="1" fill="rgba(37,99,235,0.08)"/>
+            <rect x="82" y="25" width="43" height="36" rx="2" fill="rgba(37,99,235,0.1)"/>
+            <rect x="60" y="95" width="40" height="8" rx="2" fill="rgba(37,99,235,0.15)"/>
+            <rect x="40" y="103" width="80" height="4" rx="1" fill="rgba(37,99,235,0.08)"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <span class="product-tag">一体机电脑</span>
+          <h3>商用一体机系列</h3>
+          <p>集成显示器与主机于一体，空间利用率极高。适用于收银、医疗、教育等商业场景，简洁美观，维护方便。</p>
+          <ul class="product-specs">
+            <li>屏幕尺寸：19" - 27"</li>
+            <li>处理器：Intel / AMD可选</li>
+            <li>内存：8GB - 32GB</li>
+            <li>支持触控：选配</li>
+          </ul>
+          <button class="btn-product" onclick="scrollToSection('contact')">咨询报价</button>
+        </div>
+      </div>
+      <!-- MINI主机 -->
+      <div class="product-card" data-category="mini">
+        <div class="product-visual mini">
+          <svg viewBox="0 0 160 120" fill="none">
+            <rect x="40" y="25" width="80" height="70" rx="8" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.3)" stroke-width="1.5"/>
+            <rect x="50" y="35" width="60" height="50" rx="4" fill="rgba(37,99,235,0.05)"/>
+            <circle cx="80" cy="55" r="16" fill="rgba(37,99,235,0.1)" stroke="rgba(37,99,235,0.2)" stroke-width="1"/>
+            <circle cx="80" cy="55" r="8" fill="rgba(37,99,235,0.2)"/>
+            <rect x="54" y="74" width="12" height="4" rx="1" fill="rgba(37,99,235,0.2)"/>
+            <rect x="70" y="74" width="12" height="4" rx="1" fill="rgba(37,99,235,0.15)"/>
+            <rect x="94" y="36" width="8" height="8" rx="1" fill="rgba(37,99,235,0.2)"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <span class="product-tag">MINI主机</span>
+          <h3>迷你主机系列</h3>
+          <p>超小体积，高性能芯片，低功耗设计。适合家庭影音、办公轻量应用及工业控制等多种场景。</p>
+          <ul class="product-specs">
+            <li>体积：极致小巧</li>
+            <li>处理器：Intel N95 / N100</li>
+            <li>功耗：6W - 15W</li>
+            <li>接口：HDMI / USB-C</li>
+          </ul>
+          <button class="btn-product" onclick="scrollToSection('contact')">咨询报价</button>
+        </div>
+      </div>
+      <!-- 商显 -->
+      <div class="product-card" data-category="display">
+        <div class="product-visual display">
+          <svg viewBox="0 0 160 120" fill="none">
+            <rect x="15" y="15" width="130" height="78" rx="5" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.3)" stroke-width="1.5"/>
+            <rect x="22" y="22" width="116" height="64" rx="2" fill="rgba(37,99,235,0.05)"/>
+            <rect x="30" y="30" width="50" height="34" rx="2" fill="rgba(37,99,235,0.12)"/>
+            <rect x="88" y="30" width="42" height="16" rx="1" fill="rgba(37,99,235,0.1)"/>
+            <rect x="88" y="50" width="42" height="6" rx="1" fill="rgba(37,99,235,0.08)"/>
+            <rect x="88" y="60" width="30" height="6" rx="1" fill="rgba(37,99,235,0.06)"/>
+            <rect x="30" y="70" width="100" height="4" rx="1" fill="rgba(37,99,235,0.1)"/>
+            <rect x="65" y="93" width="30" height="6" rx="2" fill="rgba(37,99,235,0.2)"/>
+            <rect x="55" y="99" width="50" height="3" rx="1" fill="rgba(37,99,235,0.1)"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <span class="product-tag">商业显示器</span>
+          <h3>商显系列</h3>
+          <p>高亮度、宽视角、7×24小时稳定运行。广泛应用于广告宣传、数字标牌、会议室、零售展示等商业场景。</p>
+          <ul class="product-specs">
+            <li>尺寸：32" - 98"</li>
+            <li>亮度：500 - 2000 nits</li>
+            <li>分辨率：FHD / 4K UHD</li>
+            <li>运行时间：7×24小时</li>
+          </ul>
+          <button class="btn-product" onclick="scrollToSection('contact')">咨询报价</button>
+        </div>
+      </div>
+      <!-- 台式电脑 -->
+      <div class="product-card" data-category="desktop">
+        <div class="product-visual desktop">
+          <svg viewBox="0 0 160 120" fill="none">
+            <rect x="55" y="10" width="50" height="70" rx="5" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.3)" stroke-width="1.5"/>
+            <rect x="62" y="18" width="36" height="28" rx="2" fill="rgba(37,99,235,0.1)"/>
+            <rect x="62" y="50" width="36" height="6" rx="1" fill="rgba(37,99,235,0.12)"/>
+            <rect x="62" y="60" width="20" height="6" rx="1" fill="rgba(37,99,235,0.08)"/>
+            <rect x="95" y="22" width="6" height="6" rx="1" fill="rgba(37,99,235,0.25)"/>
+            <rect x="20" y="90" width="120" height="6" rx="2" fill="rgba(37,99,235,0.12)"/>
+            <rect x="30" y="96" width="100" height="14" rx="3" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.2)" stroke-width="1"/>
+            <rect x="38" y="101" width="84" height="4" rx="1" fill="rgba(37,99,235,0.1)"/>
+          </svg>
+        </div>
+        <div class="product-info">
+          <span class="product-tag">台式电脑</span>
+          <h3>台式电脑系列</h3>
+          <p>高性能配置，支持高度个性化定制。满足图形设计、视频渲染、工程计算等高负载专业应用需求。</p>
+          <ul class="product-specs">
+            <li>处理器：Intel Core / AMD Ryzen</li>
+            <li>内存：16GB - 128GB</li>
+            <li>显卡：集显 / 独显可选</li>
+            <li>存储：SSD + HDD</li>
+          </ul>
+          <button class="btn-product" onclick="scrollToSection('contact')">咨询报价</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- OEM/ODM服务 -->
+    <div class="oem-section">
+      <div class="oem-content">
+        <div class="oem-text">
+          <span class="section-tag">OEM / ODM</span>
+          <h3>定制服务</h3>
+          <p>我们提供从设计、开发到生产的全流程OEM/ODM服务，帮助您快速将产品理念变为现实。无论是外观设计定制、硬件配置调整，还是软件系统集成，我们的专业团队都能为您提供最优解决方案。</p>
+          <div class="oem-steps">
+            <div class="step"><span class="step-num">01</span><span>需求沟通</span></div>
+            <div class="step-arrow">→</div>
+            <div class="step"><span class="step-num">02</span><span>方案设计</span></div>
+            <div class="step-arrow">→</div>
+            <div class="step"><span class="step-num">03</span><span>样品确认</span></div>
+            <div class="step-arrow">→</div>
+            <div class="step"><span class="step-num">04</span><span>批量生产</span></div>
+          </div>
+        </div>
+        <div class="oem-badges">
+          <div class="oem-badge">
+            <div class="ob-icon">🎨</div>
+            <span>外观定制</span>
+          </div>
+          <div class="oem-badge">
+            <div class="ob-icon">⚙️</div>
+            <span>硬件定制</span>
+          </div>
+          <div class="oem-badge">
+            <div class="ob-icon">💻</div>
+            <span>软件集成</span>
+          </div>
+          <div class="oem-badge">
+            <div class="ob-icon">📦</div>
+            <span>包装定制</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 联系我们 -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">CONTACT US</span>
+      <h2 class="section-title">联系我们</h2>
+      <p class="section-desc">期待与您合作，共创美好商业未来</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>与我们取得联系</h3>
+        <p>无论您有产品咨询、合作洽谈还是售后服务需求，我们的专业团队随时为您提供帮助。</p>
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div class="info-text">
+              <span class="info-label">公司地址</span>
+              <span class="info-value">广东省广州市</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div class="info-text">
+              <span class="info-label">联系电话</span>
+              <span class="info-value">400-XXX-XXXX</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div class="info-text">
+              <span class="info-label">电子邮箱</span>
+              <span class="info-value">info@longdao.com</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="info-text">
+              <span class="info-label">工作时间</span>
+              <span class="info-value">周一至周六 09:00 - 18:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-btn" title="微信公众号">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zm-2.522 4.285a.91.91 0 11-.002 1.822.91.91 0 01.002-1.822zm5.044 0a.91.91 0 11-.002 1.822.91.91 0 01.002-1.822zm9.478 2.498c-4.244 0-7.68 2.858-7.68 6.387 0 3.527 3.436 6.387 7.68 6.387a9.01 9.01 0 002.5-.353.762.762 0 01.633.087l1.676.98a.288.288 0 00.147.047c.14 0 .254-.114.254-.26 0-.063-.025-.124-.042-.186l-.343-1.305a.52.52 0 01.188-.585C23.015 19.045 24 17.522 24 15.858c0-3.529-3.436-6.387-7.68-6.387h-.629zm-3.36 3.38a.802.802 0 110 1.604.802.802 0 010-1.604zm3.989 0a.802.802 0 110 1.604.802.802 0 010-1.604z"/></svg>
+          </a>
+          <a href="#" class="social-btn" title="阿里巴巴">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.5 5.5c1.5 0 2.5 1 2.5 2.5S14 10.5 12.5 10.5 10 9.5 10 8s1-2.5 2.5-2.5zm4 12h-8v-1.5c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5V17.5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <form class="contact-form" onsubmit="submitForm(event)">
+          <h3>在线留言</h3>
+          <p class="form-desc">填写下方表单，我们将在24小时内回复您</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>您的姓名 <span class="required">*</span></label>
+              <input type="text" placeholder="请输入姓名" required />
+            </div>
+            <div class="form-group">
+              <label>联系电话 <span class="required">*</span></label>
+              <input type="tel" placeholder="请输入手机号码" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>公司名称</label>
+            <input type="text" placeholder="请输入公司名称（选填）" />
+          </div>
+          <div class="form-group">
+            <label>咨询产品</label>
+            <select>
+              <option value="">-- 请选择产品类型 --</option>
+              <option>一体机电脑</option>
+              <option>MINI主机</option>
+              <option>商业显示器（商显）</option>
+              <option>台式电脑</option>
+              <option>OEM/ODM定制服务</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>留言内容 <span class="required">*</span></label>
+            <textarea placeholder="请详细描述您的需求，例如：产品规格、采购数量、定制要求等..." rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">提交留言</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo footer-logo">
+          <span class="logo-icon">龙</span>
+          <div class="logo-text">
+            <span class="company-name">广州龙到网络科技</span>
+            <span class="company-sub">LONGDAO NETWORK TECHNOLOGY</span>
+          </div>
+        </div>
+        <p>专注智能硬件制造，提供专业OEM/ODM服务</p>
+        <p>一体机 · MINI主机 · 商显 · 台式电脑</p>
+      </div>
+      <div class="footer-links">
+        <h4>快速导航</h4>
+        <a href="#home" onclick="scrollToSection('home')">首页</a>
+        <a href="#about" onclick="scrollToSection('about')">关于我们</a>
+        <a href="#products" onclick="scrollToSection('products')">产品服务</a>
+        <a href="#contact" onclick="scrollToSection('contact')">联系我们</a>
+      </div>
+      <div class="footer-products">
+        <h4>产品系列</h4>
+        <a href="#products">一体机电脑</a>
+        <a href="#products">MINI主机</a>
+        <a href="#products">商业显示器</a>
+        <a href="#products">台式电脑</a>
+        <a href="#products">OEM/ODM定制</a>
+      </div>
+      <div class="footer-contact">
+        <h4>联系方式</h4>
+        <p>📍 广东省广州市</p>
+        <p>📞 400-XXX-XXXX</p>
+        <p>✉️ info@longdao.com</p>
+        <p>🕐 周一至周六 09:00-18:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 广州龙到网络科技有限公司 版权所有</p>
+      <p>粤ICP备XXXXXXXX号</p>
+    </div>
+  </div>
+</footer>
+
+<!-- 返回顶部 -->
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+<!-- 提交成功弹窗 -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="modal-icon">✓</div>
+    <h3>提交成功！</h3>
+    <p>感谢您的留言，我们将在24小时内与您联系。</p>
+    <button class="btn btn-primary" onclick="closeModal()">确定</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
