@@ -111,6 +111,13 @@ img { max-width: 100%; }
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
+.logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -1171,6 +1178,12 @@ img { max-width: 100%; }
 .footer-brand .footer-logo .company-name,
 .footer-brand .footer-logo .logo-icon {
   filter: brightness(1.1);
+}
+
+.footer-brand .footer-logo .logo-img {
+  filter: brightness(1.1);
+  height: 42px;
+  width: auto;
 }
 
 .footer-brand .company-name { color: white; }
