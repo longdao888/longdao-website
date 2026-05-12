@@ -205,8 +205,11 @@ img { max-width: 100%; }
   left: 0;
   width: 100%;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 0.8s ease;
   background: #0f172a;
+  /* 性能优化 */
+  will-change: opacity;
+  backface-visibility: hidden;
 }
 
 .carousel-item.active {
@@ -219,6 +222,10 @@ img { max-width: 100%; }
   width: 100%;
   height: auto;
   display: block;
+  /* 性能优化：允许浏览器异步解码 */
+  decoding: async;
+  /* 保持比例 */
+  object-fit: cover;
 }
 
 /* 轮播指示器 */
