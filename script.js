@@ -8,16 +8,23 @@ let slideInterval = null;
 const SLIDE_DURATION = 5000; // 5秒切换
 
 function initCarousel() {
-  // 图片加载后校准宽高比
+  // 图片加载后设置容器高度
   const img = document.querySelector('.carousel-img');
-  if (img) {
-    const setRatio = () => {
-      const ratio = (img.naturalWidth / img.naturalHeight).toFixed(4);
-      const carousel = document.getElementById('heroCarousel');
-      if (carousel) carousel.style.aspectRatio = ratio;
+  const carousel = document.getElementById('heroCarousel');
+  
+  if (img && carousel) {
+    const setHeight = () => {
+      // 根据图片实际比例设置容器宽高比
+      const ratio = img.naturalHeight / img.naturalWidth;
+      carousel.style.paddingBottom = (ratio * 100) + '%';
+      carousel.style.height = '0';
     };
-    img.addEventListener('load', setRatio);
-    if (img.complete) setRatio();
+    
+    if (img.complete) {
+      setHeight();
+    } else {
+      img.addEventListener('load', setHeight);
+    }
   }
 
   // 启动自动播放
