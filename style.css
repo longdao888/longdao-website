@@ -189,46 +189,53 @@ img { max-width: 100%; }
 .hero {
   position: relative;
   width: 100%;
-  /* 移除 overflow:hidden，避免裁剪图片 */
+  padding-top: 72px;
   background: #0f172a;
 }
 
 .hero-carousel {
-  position: relative;
   width: 100%;
+  height: 0;
+  /* 749/1920 = 0.3901 → 39.01% */
+  padding-bottom: 39.01%;
+  position: relative;
 }
 
 .carousel-item {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
   opacity: 0;
   transition: opacity 0.8s ease;
   background: #0f172a;
   will-change: opacity;
   backface-visibility: hidden;
-  /* 默认隐藏但保留文档流位置 */
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .carousel-item.active {
   opacity: 1;
   z-index: 1;
-  /* active 时回到文档流，撑开容器 */
-  position: relative;
-  top: auto;
-  left: auto;
 }
 
 .carousel-img {
   width: 100%;
-  height: auto;
-  display: block;
-  decoding: async;
-  /* 完整显示整张图片，不裁剪 */
+  height: 100%;
   object-fit: contain;
+  display: block;
   background: #0f172a;
+}
+
+/* 移动端轮播图适配 */
+@media (max-width: 768px) {
+  .carousel-arrow.prev { left: 12px; }
+  .carousel-arrow.next { right: 12px; }
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
 }
 
 /* 轮播指示器 */
