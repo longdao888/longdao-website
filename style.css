@@ -196,17 +196,10 @@ img { max-width: 100%; }
 .hero-carousel {
   position: relative;
   width: 100%;
-  /* 按实际图片比例 3277x1279 ≈ 2.56:1 设置，图片加载后 JS 会动态校准 */
-  aspect-ratio: 2.56 / 1;
+  /* 不强制宽高比，让图片自然撑开容器 */
 }
 
-@media (max-width: 768px) {
-  .hero-carousel {
-    aspect-ratio: 4 / 3;
-  }
 }
-
-.carousel-item {
   position: absolute;
   top: 0;
   left: 0;
@@ -229,10 +222,10 @@ img { max-width: 100%; }
   width: 100%;
   height: auto;
   display: block;
-  /* 性能优化：允许浏览器异步解码 */
   decoding: async;
-  /* 保持比例 */
-  object-fit: cover;
+  /* 完整显示整张图片，不裁剪 */
+  object-fit: contain;
+  background: #0f172a;
 }
 
 /* 轮播指示器 */
