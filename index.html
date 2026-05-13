@@ -42,15 +42,15 @@
   <div class="hero-carousel" id="heroCarousel">
     <!-- 轮播项 -->
     <div class="carousel-item active">
-      <picture>
-        <!-- 移动端优先加载小图 -->
-        <source media="(max-width: 768px)" srcset="images/hero-banner-1-mobile.webp" type="image/webp">
-        <source media="(max-width: 768px)" srcset="images/hero-banner-1-mobile.webp" type="image/jpeg">
-        <!-- 桌面端使用大图 -->
-        <source srcset="images/hero-banner-1.webp" type="image/webp">
-        <!-- 回退格式 -->
-        <img class="carousel-img" src="images/hero-banner-1.webp" alt="广州龙到网络科技" width="1920" height="749" fetchpriority="high">
-      </picture>
+      <img class="carousel-img" 
+           src="images/hero-banner-1.webp" 
+           srcset="images/hero-banner-1-mobile.webp 768w, images/hero-banner-1.webp 1920w" 
+           sizes="100vw"
+           alt="广州龙到网络科技" 
+           width="1920" 
+           height="749" 
+           fetchpriority="high"
+           decoding="async">
     </div>
   </div>
 
