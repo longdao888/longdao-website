@@ -90,6 +90,9 @@ function scrollToTop() {
 }
 
 /* ========== 移动端菜单 ========== */
+let navOriginalParent = null;   /* 记录 nav-menu 的原始父容器 */
+let navOriginalNextSibling = null; /* 记录原始位置，用于放回 */
+
 function toggleMenu() {
   const menu = document.getElementById('navMenu');
   const overlay = document.getElementById('navOverlay');
@@ -97,6 +100,15 @@ function toggleMenu() {
   menu.classList.toggle('open', menuOpen);
   overlay.classList.toggle('show', menuOpen);
   document.body.style.overflow = menuOpen ? 'hidden' : '';
+
+  /* 移动端：打开时把菜单移到 body 末尾，脱离 header 的层叠上下文 */
+  if (menuOpen && window.innerWidth <= 768) {
+    if (!navOriginalParent) {
+      navOriginalParent = menu.parentNode;
+      navOriginalNextSibling = menu.nextSibling;
+    }
+    document.body.appendChild(menu);
+  }
 }
 
 function closeMenu() {
@@ -106,6 +118,13 @@ function closeMenu() {
   menu.classList.remove('open');
   overlay.classList.remove('show');
   document.body.style.overflow = '';
+
+  /* 把菜单放回 header 内原处，恢复桌面端 flex 布局 */
+  if (navOriginalParent && menu.parentNode !== navOriginalParent) {
+    navOriginalParent.insertBefore(menu, navOriginalNextSibling);
+    navOriginalParent = null;
+    navOriginalNextSibling = null;
+  }
 }
 
 function initMobileMenu() {
@@ -134,6 +153,13 @@ function initMobileMenu() {
     };
     link.addEventListener('click', handler);
     link.addEventListener('touchend', (e) => { e.preventDefault(); handler(e); }, { passive: false });
+  });
+
+  /* 窗口 resize：从移动端切换到桌面端时，确保菜单回到 header 内 */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navOriginalParent) {
+      closeMenu();
+    }
   });
 }
 
