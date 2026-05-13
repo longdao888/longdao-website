@@ -24,20 +24,19 @@
         </div>
       </div>
     </div>
+    <!-- 导航菜单：桌面端在 header 内横向排列，移动端通过 JS 添加到 body 末尾以获得独立 z-index -->
+    <nav class="nav-menu" id="navMenu">
+      <a href="javascript:void(0)" class="nav-link active" data-section="home">首页</a>
+      <a href="javascript:void(0)" class="nav-link" data-section="about">关于我们</a>
+      <a href="javascript:void(0)" class="nav-link" data-section="products">产品服务</a>
+      <a href="javascript:void(0)" class="nav-link" data-section="contact">联系我们</a>
+    </nav>
     <!-- 汉堡按钮 -->
     <button class="nav-toggle" id="navToggle" onclick="toggleMenu()" aria-label="打开菜单">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
-
-<!-- 移动端菜单（与 header 平级，z-index 独立） -->
-<nav class="nav-menu" id="navMenu">
-  <a href="javascript:void(0)" class="nav-link active" data-section="home">首页</a>
-  <a href="javascript:void(0)" class="nav-link" data-section="about">关于我们</a>
-  <a href="javascript:void(0)" class="nav-link" data-section="products">产品服务</a>
-  <a href="javascript:void(0)" class="nav-link" data-section="contact">联系我们</a>
-</nav>
 
 <!-- 移动端菜单遮罩层 -->
 <div class="nav-overlay" id="navOverlay"></div>
