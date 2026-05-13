@@ -106,7 +106,7 @@ function scrollToSection(id) {
   const el = document.getElementById(id);
   if (!el) return;
   const headerHeight = document.getElementById('header').offsetHeight;
-  const top = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+  const top = el.getBoundingClientRect().top + window.scrollY - headerHeight;
   window.scrollTo({ top, behavior: 'smooth' });
   // 关闭移动端菜单
   document.getElementById('navMenu').classList.remove('open');
