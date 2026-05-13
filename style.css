@@ -73,6 +73,7 @@ img { max-width: 100%; }
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid transparent;
   transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .header.scrolled {
@@ -1365,8 +1366,9 @@ img { max-width: 100%; }
     gap: 4px;
     backdrop-filter: blur(20px);
   }
-  .nav-menu.open { display: flex; }
-  .nav-link { text-align: center; }
+  .nav-menu.open { display: flex; z-index: 1001; pointer-events: auto; }
+  .nav-link { text-align: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+  .nav-toggle { display: flex; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
   .nav-toggle { display: flex; }
 
   .hero { padding: 100px 0 60px; }
