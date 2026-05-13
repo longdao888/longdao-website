@@ -101,17 +101,51 @@ function stopAutoPlay() {
   }
 }
 
-// ========== 平滑滚动 ==========
-function scrollToSection(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const headerHeight = document.getElementById('header').offsetHeight;
-  const top = el.getBoundingClientRect().top + window.scrollY - headerHeight;
-  window.scrollTo({ top, behavior: 'smooth' });
-  // 关闭移动端菜单和遮罩层
-  document.getElementById('navMenu').classList.remove('open');
-  document.getElementById('navOverlay').classList.remove('show');
-  document.body.style.overflow = '';
+// ========== 移动端菜单 ==========
+function initMobileMenu() {
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  const navOverlay = document.getElementById('navOverlay');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function toggleMenu() {
+    const isOpen = navMenu.classList.toggle('open');
+    navOverlay.classList.toggle('show', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  function closeMenu() {
+    navMenu.classList.remove('open');
+    navOverlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  function handleNavClick(e) {
+    e.preventDefault();
+    const section = e.currentTarget.getAttribute('data-section');
+    if (!section) return;
+    const el = document.getElementById(section);
+    if (!el) return;
+    const headerHeight = document.getElementById('header').offsetHeight;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
+    closeMenu();
+  }
+
+  if (navToggle) {
+    navToggle.addEventListener('click', (e) => { e.preventDefault(); toggleMenu(); });
+    navToggle.addEventListener('touchend', (e) => { e.preventDefault(); toggleMenu(); }, { passive: false });
+  }
+
+  if (navOverlay) {
+    navOverlay.addEventListener('click', closeMenu);
+    navOverlay.addEventListener('touchend', (e) => { e.preventDefault(); closeMenu(); }, { passive: false });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', handleNavClick);
+    link.addEventListener('touchend', handleNavClick, { passive: false });
+  });
 }
 
 function scrollToTop() {
@@ -159,7 +193,7 @@ function updateActiveNav() {
 
   navLinks.forEach(link => {
     link.classList.remove('active');
-    if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(current)) {
+    if (link.getAttribute('data-section') === current) {
       link.classList.add('active');
     }
   });
@@ -175,14 +209,19 @@ function toggleMenu() {
 }
 
 // ========== 产品筛选 ==========
-function switchTab(category) {
-  // 更新按钮状态
+function initTabs() {
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('active');
+    btn.addEventListener('click', (e) => {
+      const category = e.currentTarget.dataset.category;
+      if (!category) return;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      filterProducts(category);
+    });
   });
-  event.target.classList.add('active');
+}
 
-  // 筛选产品
+function filterProducts(category) {
   const cards = document.querySelectorAll('.product-card');
   cards.forEach(card => {
     if (category === 'all' || card.dataset.category === category) {
@@ -268,7 +307,9 @@ function animateNumbers() {
 // ========== 初始化 ==========
 document.addEventListener('DOMContentLoaded', () => {
   initAnimations();
-  initCarousel(); // 初始化轮播
+  initCarousel();
+  initMobileMenu();
+  initTabs();
 
   // Hero 出场
   setTimeout(() => {
