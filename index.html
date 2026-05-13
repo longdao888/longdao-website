@@ -26,18 +26,18 @@
       </div>
     </div>
     <nav class="nav-menu" id="navMenu">
-      <a href="#home" class="nav-link active" onclick="scrollToSection('home')">首页</a>
-      <a href="#about" class="nav-link" onclick="scrollToSection('about')">关于我们</a>
-      <a href="#products" class="nav-link" onclick="scrollToSection('products')">产品服务</a>
-      <a href="#contact" class="nav-link" onclick="scrollToSection('contact')">联系我们</a>
+      <a href="#home" class="nav-link active" data-section="home">首页</a>
+      <a href="#about" class="nav-link" data-section="about">关于我们</a>
+      <a href="#products" class="nav-link" data-section="products">产品服务</a>
+      <a href="#contact" class="nav-link" data-section="contact">联系我们</a>
     </nav>
-    <button class="nav-toggle" id="navToggle" onclick="toggleMenu()">
+    <button class="nav-toggle" id="navToggle">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 <!-- 移动端菜单遮罩层 -->
-<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <!-- 首页 Hero 轮播 -->
 <section id="home" class="hero">
@@ -223,11 +223,11 @@
       <p class="section-desc">多元化产品线，覆盖商业与个人全场景需求</p>
     </div>
     <div class="product-tabs">
-      <button class="tab-btn active" onclick="switchTab('all')">全部产品</button>
-      <button class="tab-btn" onclick="switchTab('aio')">一体机</button>
-      <button class="tab-btn" onclick="switchTab('mini')">MINI主机</button>
-      <button class="tab-btn" onclick="switchTab('display')">商显</button>
-      <button class="tab-btn" onclick="switchTab('desktop')">台式电脑</button>
+      <button class="tab-btn active" data-category="all">全部产品</button>
+      <button class="tab-btn" data-category="aio">一体机</button>
+      <button class="tab-btn" data-category="mini">MINI主机</button>
+      <button class="tab-btn" data-category="display">商显</button>
+      <button class="tab-btn" data-category="desktop">台式电脑</button>
     </div>
     <div class="products-grid" id="productsGrid">
       <!-- 一体机 -->
