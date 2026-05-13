@@ -136,7 +136,7 @@ img { max-width: 100%; }
   transition: var(--transition);
 }
 
-/* Nav menu - default desktop */
+/* Nav menu - desktop: inside header flex container */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -178,18 +178,6 @@ img { max-width: 100%; }
 }
 
 /* 移动端菜单（与 header 平级，z-index 独立） */
-.nav-menu {
-  /* desktop: flex row */
-}
-
-.nav-menu a {
-  /* 让整个链接区域可点击 */
-  display: block;
-  padding: 14px 24px;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
 @media (max-width: 768px) {
   .nav-toggle { display: flex; }
 
@@ -216,9 +204,6 @@ img { max-width: 100%; }
     font-size: 16px;
   }
 
-  .nav-link a {
-    padding: 14px 24px;
-  }
 }
 
 /* ===========================
