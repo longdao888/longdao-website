@@ -199,21 +199,26 @@ img { max-width: 100%; }
 }
 
 .carousel-item {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   opacity: 0;
   transition: opacity 0.8s ease;
   background: #0f172a;
   will-change: opacity;
   backface-visibility: hidden;
+  /* 默认隐藏但保留文档流位置 */
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .carousel-item.active {
-  position: relative;
   opacity: 1;
   z-index: 1;
+  /* active 时回到文档流，撑开容器 */
+  position: relative;
+  top: auto;
+  left: auto;
 }
 
 .carousel-img {
