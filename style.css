@@ -189,17 +189,16 @@ img { max-width: 100%; }
 .hero {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  /* 移除 overflow:hidden，避免裁剪图片 */
   background: #0f172a;
 }
 
 .hero-carousel {
   position: relative;
   width: 100%;
-  /* 不强制宽高比，让图片自然撑开容器 */
 }
 
-}
+.carousel-item {
   position: absolute;
   top: 0;
   left: 0;
@@ -207,7 +206,6 @@ img { max-width: 100%; }
   opacity: 0;
   transition: opacity 0.8s ease;
   background: #0f172a;
-  /* 性能优化 */
   will-change: opacity;
   backface-visibility: hidden;
 }
