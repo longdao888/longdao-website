@@ -108,8 +108,10 @@ function scrollToSection(id) {
   const headerHeight = document.getElementById('header').offsetHeight;
   const top = el.getBoundingClientRect().top + window.scrollY - headerHeight;
   window.scrollTo({ top, behavior: 'smooth' });
-  // 关闭移动端菜单
+  // 关闭移动端菜单和遮罩层
   document.getElementById('navMenu').classList.remove('open');
+  document.getElementById('navOverlay').classList.remove('show');
+  document.body.style.overflow = '';
 }
 
 function scrollToTop() {
@@ -166,7 +168,10 @@ function updateActiveNav() {
 // ========== 移动端菜单 ==========
 function toggleMenu() {
   const menu = document.getElementById('navMenu');
-  menu.classList.toggle('open');
+  const overlay = document.getElementById('navOverlay');
+  const isOpen = menu.classList.toggle('open');
+  overlay.classList.toggle('show');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
 // ========== 产品筛选 ==========
