@@ -190,13 +190,34 @@ function filterProducts(category) {
 /* ========== 表单提交 ========== */
 function submitForm(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('[type="submit"]');
+  const form = e.target;
+  const btn = form.querySelector('[type="submit"]');
   btn.textContent = '提交中...';
   btn.disabled = true;
+
+  /* 收集表单数据 */
+  const inputs = form.querySelectorAll('input, select, textarea');
+  const name    = inputs[0]?.value?.trim() || '';
+  const phone   = inputs[1]?.value?.trim() || '';
+  const company = inputs[2]?.value?.trim() || '';
+  const product = inputs[3]?.value || '';
+  const message = inputs[4]?.value?.trim() || '';
+
+  /* 写入后台 localStorage，供 admin.html 读取 */
+  try {
+    const STORAGE_KEY = 'longdao_admin_data';
+    let adminData = null;
+    try { adminData = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(ex) {}
+    if (adminData && Array.isArray(adminData.messages)) {
+      adminData.messages.push({ id: 'm' + Date.now(), name, phone, company, product, message, time: Date.now(), read: false });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(adminData));
+    }
+  } catch(ex) {}
+
   setTimeout(() => {
     btn.textContent = '提交留言';
     btn.disabled = false;
-    e.target.reset();
+    form.reset();
     document.getElementById('successModal').classList.add('show');
   }, 1000);
 }
