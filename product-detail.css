@@ -1,0 +1,382 @@
+/* ===========================
+   产品详情页专用样式
+   product-detail.css
+   =========================== */
+
+/* 面包屑导航 */
+.breadcrumb-bar {
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  margin-top: 72px;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+.breadcrumb a {
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb a:hover { color: var(--primary); }
+.bc-sep { color: var(--text-3); margin: 0 2px; }
+.bc-cur { color: var(--text); font-weight: 500; }
+
+/* 产品详情主区域 */
+.product-detail-page {
+  padding: 48px 0 80px;
+}
+
+/* 产品头部 Hero */
+.pd-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+/* 产品大图区域 */
+.pd-visual-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.pd-visual {
+  width: 100%;
+  max-width: 460px;
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f0ff 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(37,99,235,0.12);
+  overflow: hidden;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.08);
+}
+.pd-visual svg { width: 100%; height: auto; display: block; }
+
+.pd-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.pd-badge {
+  background: rgba(37,99,235,0.08);
+  color: var(--primary);
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 产品信息区 */
+.pd-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.pd-series {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.pd-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.pd-summary {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+/* 产品亮点 */
+.pd-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.pd-hl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.hl-icon { font-size: 22px; flex-shrink: 0; }
+.pd-hl div { display: flex; flex-direction: column; gap: 2px; }
+.pd-hl strong { font-size: 14px; font-weight: 600; color: var(--dark); }
+.pd-hl span { font-size: 12px; color: var(--text-3); }
+
+/* 操作按钮 */
+.pd-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* 分区标题 */
+.pd-section {
+  margin-bottom: 72px;
+}
+.pd-sec-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+.pd-sec-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 48px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+/* 规格参数表格 */
+.spec-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.spec-table thead tr {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+.spec-table thead th {
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 20px;
+  text-align: left;
+  white-space: nowrap;
+}
+.spec-table thead th:first-child { border-radius: 11px 0 0 0; }
+.spec-table thead th:last-child { border-radius: 0 11px 0 0; }
+.spec-table tbody tr:nth-child(even) { background: var(--bg-2); }
+.spec-table tbody tr:hover { background: rgba(37,99,235,0.04); }
+.spec-table tbody td {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.spec-table tbody td:first-child {
+  font-weight: 500;
+  color: var(--dark);
+  width: 160px;
+  white-space: nowrap;
+}
+.spec-table tbody tr:last-child td { border-bottom: none; }
+
+/* 应用场景 */
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.scene-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: var(--transition);
+}
+.scene-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: rgba(37,99,235,0.2);
+}
+.scene-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+.scene-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.scene-card p {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* OEM/ODM 定制区域 */
+.pd-oem {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f0fe 100%);
+  border-radius: 20px;
+  padding: 48px;
+  border: 1px solid rgba(37,99,235,0.12);
+}
+.oem-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.oem-detail-text .section-tag { margin-bottom: 8px; display: inline-block; }
+.oem-detail-text h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+.oem-detail-text > p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.oem-detail-list {
+  list-style: none;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.oem-detail-list li {
+  font-size: 14px;
+  color: var(--text-2);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.6;
+}
+.oem-detail-list li::before {
+  content: '›';
+  position: absolute;
+  left: 4px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* OEM步骤 */
+.oem-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.oem-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1px solid rgba(37,99,235,0.1);
+}
+.os-num {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary);
+  opacity: 0.5;
+  flex-shrink: 0;
+  min-width: 32px;
+  line-height: 1.2;
+}
+.oem-step-item strong { font-size: 14px; font-weight: 600; color: var(--dark); display: block; margin-bottom: 4px; }
+.oem-step-item p { font-size: 12px; color: var(--text-3); margin: 0; }
+
+/* 相关产品推荐 */
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.related-card {
+  display: block;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+.related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: rgba(37,99,235,0.25);
+}
+.related-card .product-visual {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rc-info {
+  padding: 16px 20px;
+}
+.rc-info .product-tag { margin-bottom: 6px; }
+.rc-info h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 4px 0 8px;
+}
+.rc-info p {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+/* 导航logo链接样式 */
+.nav-brand .logo {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 响应式 */
+@media (max-width: 1024px) {
+  .pd-hero { grid-template-columns: 1fr; gap: 32px; }
+  .pd-visual-wrap { max-width: 480px; margin: 0 auto; }
+  .scene-grid { grid-template-columns: repeat(2, 1fr); }
+  .related-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .product-detail-page { padding: 32px 0 60px; }
+  .pd-hero { gap: 24px; margin-bottom: 48px; }
+  .pd-title { font-size: 24px; }
+  .pd-highlights { grid-template-columns: 1fr 1fr; }
+  .scene-grid { grid-template-columns: 1fr 1fr; }
+  .related-grid { grid-template-columns: 1fr; }
+  .oem-detail-grid { grid-template-columns: 1fr; gap: 28px; }
+  .pd-oem { padding: 28px 20px; }
+  .spec-table tbody td:first-child { width: 120px; }
+}
+
+@media (max-width: 480px) {
+  .pd-highlights { grid-template-columns: 1fr; }
+  .scene-grid { grid-template-columns: 1fr; }
+  .pd-actions { flex-direction: column; }
+  .pd-actions .btn { text-align: center; }
+  .spec-table { font-size: 12px; }
+  .spec-table thead th, .spec-table tbody td { padding: 10px 12px; }
+}
