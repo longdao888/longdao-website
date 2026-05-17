@@ -229,6 +229,70 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    /* 图库网格 */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .gallery-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .gallery-item:hover { box-shadow: var(--shadow-md); }
+    .gallery-thumb-wrap {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--border);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .gallery-thumb-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-item-info { padding: 10px 12px; }
+    .gallery-item-name {
+      font-size: 13px; font-weight: 500; color: var(--dark);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .gallery-item-meta { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+    .gallery-item-actions {
+      display: flex; gap: 6px; padding: 8px 12px; border-top: 1px solid var(--border);
+    }
+
+    /* 图片选择器 */
+    .image-picker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px; max-height: 50vh; overflow-y: auto; padding: 4px 0;
+    }
+    .image-picker-item {
+      border: 2px solid var(--border); border-radius: 8px;
+      overflow: hidden; cursor: pointer; transition: border-color 0.15s;
+    }
+    .image-picker-item:hover { border-color: var(--primary); }
+    .image-picker-item.selected {
+      border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+    }
+    .image-picker-thumb {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--border);
+    }
+    .image-picker-name {
+      font-size: 11px; padding: 6px 8px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      color: var(--text-2);
+    }
+
+    /* 发布状态提示 */
+    .publish-bar {
+      display: none; padding: 12px 20px; border-radius: 8px;
+      margin-bottom: 20px; font-size: 14px; align-items: center; gap: 10px;
+    }
+    .publish-bar.show { display: flex; }
+    .publish-bar.success { background: rgba(22,163,74,0.1); color: var(--success); border: 1px solid rgba(22,163,74,0.2); }
+    .publish-bar.error { background: rgba(220,38,38,0.1); color: var(--danger); border: 1px solid rgba(220,38,38,0.2); }
+    .publish-bar.loading { background: rgba(37,99,235,0.1); color: var(--primary); border: 1px solid rgba(37,99,235,0.2); }
   </style>
 </head>
 <body>
@@ -268,6 +332,7 @@
     <div class="nav-section-title">内容管理</div>
     <div class="sidebar-link" data-panel="products"><span class="nav-icon">📦</span> 产品管理</div>
     <div class="sidebar-link" data-panel="banners"><span class="nav-icon">🖼</span> 轮播图管理</div>
+    <div class="sidebar-link" data-panel="gallery"><span class="nav-icon">📁</span> 图库管理</div>
     <div class="sidebar-link" data-panel="company"><span class="nav-icon">🏢</span> 公司信息</div>
     <div class="nav-section-title">用户消息</div>
     <div class="sidebar-link" data-panel="messages"><span class="nav-icon">💬</span> 留言管理 <span id="msgBadge" style="background:#dc2626;color:white;border-radius:10px;padding:1px 7px;font-size:11px;margin-left:auto;display:none"></span></div>
@@ -452,6 +517,21 @@
         </div>
       </div>
     </div>
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-header"><h3>🔧 GitHub 配置</h3></div>
+      <div class="card-body">
+        <p style="font-size:13px;color:var(--text-2);margin-bottom:16px">配置 GitHub Token 后，可一键上传图片和数据到仓库，实现自动部署。</p>
+        <div class="form-group">
+          <label>GitHub Token（Fine-grained PAT）</label>
+          <input type="password" id="settingToken" placeholder="ghp_..." style="font-family:monospace" />
+          <p style="font-size:12px;color:var(--text-3);margin-top:6px">Token 需要 <code>contents:write</code> 权限。仅保存在浏览器本地，不会上传到服务器。</p>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" onclick="saveToken()">保存 Token</button>
+          <button class="btn btn-outline" onclick="testToken()" style="margin-left:8px">测试连接</button>
+        </div>
+      </div>
+    </div>
     <div class="card">
       <div class="card-header"><h3>🗄 数据管理</h3></div>
       <div class="card-body">
@@ -465,6 +545,26 @@
       </div>
     </div>
   </div>
+
+  <!-- 图库管理面板 -->
+  <div class="panel" id="panel-gallery">
+    <div class="card">
+      <div class="card-header">
+        <h3>📁 图库管理</h3>
+        <button class="btn btn-primary" onclick="triggerImageUpload()">＋ 上传图片</button>
+      </div>
+      <div class="card-body">
+        <p style="font-size:13px;color:var(--text-2);margin-bottom:16px">上传图片到 GitHub 仓库的 <code>images/</code> 目录。支持 JPG、PNG、WebP、SVG 格式。</p>
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <div class="empty-state" id="galleryEmpty">
+          <span style="font-size:32px">📁</span>
+          <p>暂无图片，点击"上传图片"添加</p>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="imageUploadInput" accept="image/*" style="display:none" onchange="handleImageUpload(event)" />
+  </div>
+
 </div>
 
 <!-- 产品编辑模态框 -->
@@ -566,9 +666,21 @@
   </div>
 </div>
 
+<!-- 图片选择器模态框 -->
+<div class="modal-backdrop" id="imagePickerModal">
+  <div class="modal-box" style="width:680px">
+    <h2 class="modal-title">📁 选择图片</h2>
+    <div class="image-picker-grid" id="imagePickerGrid"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeImagePicker()">取消</button>
+    </div>
+  </div>
+</div>
+
 <!-- Toast 提示 -->
 <div id="toast"></div>
 
+<script src="admin-github.js"></script>
 <script>
 /* ============================================================
    龙到官网后台管理系统 - 前端 JS
