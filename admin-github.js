@@ -172,6 +172,7 @@ window.triggerImageUpload = function() {
 };
 
 window.handleImageUpload = async function(event) {
+  console.log('[DEBUG] handleImageUpload 触发，文件：', event.target.files[0]?.name);
   const file = event.target.files[0];
   if (!file) return;
   if (!file.type.startsWith('image/')) { showToast('请选择图片文件', 'error'); return; }
@@ -182,7 +183,10 @@ window.handleImageUpload = async function(event) {
   btn.disabled = true;
 
   try {
+    console.log('[DEBUG] 开始压缩图片...');
     const blob = await compressImage(file, 1920);
+    console.log('[DEBUG] 压缩完成，大小：', blob.size, 'bytes');
+
     const base64 = await new Promise((resolve, reject) => {
       const r = new FileReader();
       r.onload = () => resolve(r.result.split(',')[1]);
@@ -192,6 +196,7 @@ window.handleImageUpload = async function(event) {
 
     const name = file.name.replace(/\.[^.]+$/, '') + '.webp';
     const path = 'images/' + name;
+    console.log('[DEBUG] 准备上传到 GitHub：', path);
 
     let sha = null;
     try {
@@ -205,6 +210,7 @@ window.handleImageUpload = async function(event) {
     showToast('图片已上传：' + name, 'success');
     renderGallery();
   } catch (e) {
+    console.error('[DEBUG] 上传失败：', e);
     showToast('上传失败：' + e.message, 'error');
   } finally {
     btn.textContent = origText;
