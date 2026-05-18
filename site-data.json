@@ -1,14 +1,18 @@
 {
-  "version": "1.1",
-  "updatedAt": "2026-05-18T11:00:00.000Z",
+  "version": "1.0",
+  "updatedAt": "2026-05-18T03:57:21.535Z",
   "banners": [
     {
       "id": "b1",
       "src": "images/hero-banner-1.webp",
       "alt": "广州龙到网络科技 - 智能硬件制造专家",
-      "link": "",
-      "title": "智能硬件制造专家",
-      "subtitle": "引领科技新未来"
+      "link": ""
+    },
+    {
+      "id": "b1779076640673",
+      "src": "images/banner_chinese_20260512.webp",
+      "alt": "",
+      "link": ""
     }
   ],
   "homepage": {
