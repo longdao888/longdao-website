@@ -695,14 +695,191 @@ function getDefaultData() {
   return {
     admin: { ...DEFAULT_ADMIN },
     products: [
-      { id: 'p1', name: '商用一体机系列', category: 'aio', desc: '集成显示器与主机于一体，空间利用率极高。适用于收银、医疗、教育等商业场景，简洁美观，维护方便。', specs: ['屏幕尺寸：19" - 27"', '处理器：Intel / AMD可选', '内存：8GB - 32GB', '支持触控：选配'], detailUrl: 'product-aio.html', status: 'published' },
-      { id: 'p2', name: '迷你主机系列', category: 'mini', desc: '超小体积，高性能芯片，低功耗设计。适合家庭影音、办公轻量应用及工业控制等多种场景。', specs: ['体积：极致小巧', '处理器：Intel N95 / N100', '功耗：6W - 15W', '接口：HDMI / USB-C'], detailUrl: 'product-mini.html', status: 'published' },
-      { id: 'p3', name: '商显系列', category: 'display', desc: '高亮度、宽视角、7×24小时稳定运行。广泛应用于广告宣传、数字标牌、会议室、零售展示等商业场景。', specs: ['尺寸：32" - 98"', '亮度：500 - 2000 nits', '分辨率：FHD / 4K UHD', '运行时间：7×24小时'], detailUrl: 'product-display.html', status: 'published' },
-      { id: 'p4', name: '台式电脑系列', category: 'desktop', desc: '高性能配置，支持高度个性化定制。满足图形设计、视频渲染、工程计算等高负载专业应用需求。', specs: ['处理器：Intel Core / AMD Ryzen', '内存：16GB - 128GB', '显卡：集显 / 独显可选', '存储：SSD + HDD'], detailUrl: 'product-desktop.html', status: 'published' }
+      { id: 'p1', name: '商用一体机系列', category: 'aio', desc: '集成显示器与主机于一体，空间利用率极高。适用于收银、医疗、教育等商业场景，简洁美观，维护方便。', specs: ['屏幕尺寸：19" - 27"', '处理器：Intel / AMD可选', '内存：8GB - 32GB', '支持触控：选配'], detailUrl: 'product-aio.html', status: 'published', image: 'images/logo.webp' },
+      { id: 'p2', name: '迷你主机系列', category: 'mini', desc: '超小体积，高性能芯片，低功耗设计。适合家庭影音、办公轻量应用及工业控制等多种场景。', specs: ['体积：极致小巧', '处理器：Intel N95 / N100', '功耗：6W - 15W', '接口：HDMI / USB-C'], detailUrl: 'product-mini.html', status: 'published', image: 'images/logo.webp' },
+      { id: 'p3', name: '商显系列', category: 'display', desc: '高亮度、宽视角、7×24小时稳定运行。广泛应用于广告宣传、数字标牌、会议室、零售展示等商业场景。', specs: ['尺寸：32" - 98"', '亮度：500 - 2000 nits', '分辨率：FHD / 4K UHD', '运行时间：7×24小时'], detailUrl: 'product-display.html', status: 'published', image: 'images/logo.webp' },
+      { id: 'p4', name: '台式电脑系列', category: 'desktop', desc: '高性能配置，支持高度个性化定制。满足图形设计、视频渲染、工程计算等高负载专业应用需求。', specs: ['处理器：Intel Core / AMD Ryzen', '内存：16GB - 128GB', '显卡：集显 / 独显可选', '存储：SSD + HDD'], detailUrl: 'product-desktop.html', status: 'published', image: 'images/logo.webp' }
     ],
     banners: [
       { id: 'b1', src: 'images/hero-banner-1.webp', alt: '广州龙到网络科技 - 智能硬件制造专家', link: '' }
     ],
+    homepage: {
+      hero: {
+        badge: '专业 · 创新 · 定制',
+        title: '智能硬件<span class="highlight">制造专家</span><br>引领科技新未来',
+        desc: '专注一体机电脑、MINI主机、商业显示器及台式电脑研发制造<br>提供专业 OEM / ODM 定制服务，满足您的个性化需求',
+        stats: [
+          { num: '10+', label: '年研发经验' },
+          { num: '500+', label: '企业客户' },
+          { num: '50+', label: '产品系列' },
+          { num: '20+', label: '出口国家' }
+        ]
+      },
+      advantages: [
+        { icon: 'check', title: '品质保证', desc: '严格质量管控体系，通过ISO国际认证，每款产品出厂前经过严格测试' },
+        { icon: 'display', title: 'OEM/ODM定制', desc: '支持外观设计、硬件配置、软件系统全面定制，满足品牌商个性化需求' },
+        { icon: 'plus', title: '快速交付', desc: '完善的供应链管理，快速响应客户需求，确保准时交货，降低客户等待成本' },
+        { icon: 'home', title: '专业服务', desc: '资深工程师团队提供全程技术支持，售前咨询到售后维护一站式解决方案' }
+      ],
+      about: {
+        title: '关于我们',
+        tag: 'ABOUT US',
+        subtitle: '深耕硬件制造领域，以技术创新驱动企业发展',
+        text1: '广州龙到网络科技有限公司成立于广州，是一家专注于智能硬件研发、生产与销售的高新技术企业。公司主要经营一体机电脑、MINI主机、商业显示器（商显）及台式电脑等产品，并提供专业的OEM/ODM定制服务。',
+        text2: '经过多年发展，公司已形成完整的产品研发体系和成熟的制造工艺，产品覆盖教育、医疗、零售、金融等多个行业领域，深受国内外客户信赖。',
+        features: ['自主研发核心技术，持续创新迭代', '通过CE、FCC、RoHS等国际权威认证', '完善售后服务体系，响应及时高效', '产品远销欧美、东南亚等20余个国家和地区'],
+        certs: ['CE认证', 'FCC认证', 'RoHS认证', 'ISO9001'],
+        year: 'Est. 2014',
+        location: '📍 广州 · 广东',
+        rating: 'A+ 供应商评级'
+      },
+      oem: {
+        tag: 'OEM / ODM',
+        title: '定制服务',
+        desc: '我们提供从设计、开发到生产的全流程OEM/ODM服务，帮助您快速将产品理念变为现实。无论是外观设计定制、硬件配置调整，还是软件系统集成，我们的专业团队都能为您提供最优解决方案。',
+        steps: ['需求沟通', '方案设计', '样品确认', '批量生产'],
+        badges: [
+          { icon: '🎨', title: '外观定制' },
+          { icon: '⚙️', title: '硬件定制' },
+          { icon: '💻', title: '软件集成' },
+          { icon: '📦', title: '包装定制' }
+        ]
+      }
+    },
+    productDetails: {
+      aio: {
+        tag: '一体机电脑', series: 'AIO Series', title: '商用一体机系列',
+        summary: '集成显示器与主机于一体，空间利用率极高。专为收银、医疗、教育、零售等商业场景设计，简洁美观，维护方便，支持全系列OEM/ODM定制服务。',
+        highlights: [
+          { icon: '🖥', title: '19" - 27"', subtitle: '多尺寸选择' },
+          { icon: '👆', title: '触控可选', subtitle: '电容多点触控' },
+          { icon: '⚡', title: 'Intel/AMD', subtitle: '双平台可选' },
+          { icon: '🔧', title: 'OEM/ODM', subtitle: '全面定制服务' }
+        ],
+        specs: {
+          headers: ['参数项目', '基础款', '标准款', '专业款'],
+          rows: [
+            ['屏幕尺寸', '19"', '21.5" / 23.8"', '27"'],
+            ['分辨率', '1280×1024', '1920×1080 FHD', '2560×1440 QHD'],
+            ['处理器', 'Intel Celeron J4125', 'Intel Core i3 / i5', 'Intel Core i7 / AMD Ryzen 7'],
+            ['内存', '4GB / 8GB DDR4', '8GB / 16GB DDR4', '16GB / 32GB DDR4'],
+            ['存储', '128GB SSD', '256GB / 512GB SSD', '512GB / 1TB SSD'],
+            ['操作系统', 'Windows 10 / Linux', 'Windows 10 / 11', 'Windows 11 Pro'],
+            ['触控', '不支持', '可选（10点电容）', '标配（10点电容）'],
+            ['接口', 'USB×4, HDMI×1', 'USB×6, HDMI×2, RJ45', 'USB×8, HDMI×2, DP, RJ45'],
+            ['摄像头', '不含', '可选（1080P）', '标配（1080P+麦克风）'],
+            ['功耗', '约 35W', '约 55W', '约 85W'],
+            ['认证', 'CE / FCC', 'CE / FCC / RoHS', 'CE / FCC / RoHS / ISO9001']
+          ]
+        },
+        scenes: [
+          { icon: '🏪', title: '零售收银', desc: '点位精确触控，收银系统稳定运行，支持多外设扩展，打印机、扫码枪一体接入。' },
+          { icon: '🏥', title: '医疗行业', desc: '医疗级防水设计可选，符合医疗环境标准，适用于护士站、门诊叫号、检查报告展示。' },
+          { icon: '🏫', title: '教育培训', desc: '大屏触控交互，支持电子教学，批量定制系统镜像，降低IT运维成本。' },
+          { icon: '🏦', title: '金融自助', desc: '稳定可靠的硬件平台，支持人脸识别模块集成，适用于自助业务终端场景。' },
+          { icon: '🏨', title: '酒店前台', desc: '简洁美观的一体化设计，节省台面空间，与PMS系统无缝对接。' },
+          { icon: '🏭', title: '工业控制', desc: '可选工业级配置，支持宽温运行，适应复杂工厂环境，稳定运行无忧。' }
+        ],
+        oem: { items: ['外观定制：机身颜色、LOGO、尺寸比例均可按需调整', '配置定制：处理器、内存、存储、接口按项目需求配置', '系统集成：预装指定操作系统和应用软件', '包装定制：品牌包装、配件搭配、说明书定制', '起订量：小批量起订，具体MOQ请咨询业务'] },
+        related: ['mini', 'display', 'desktop']
+      },
+      mini: {
+        tag: 'MINI主机', series: 'MINI Series', title: '迷你主机系列',
+        summary: '超小体积，高性能芯片，低功耗设计。专为家庭影音、办公轻量应用及工业控制等多种场景设计，支持OEM/ODM定制。',
+        highlights: [
+          { icon: '📦', title: '极致小巧', subtitle: '体积仅0.5L' },
+          { icon: '⚡', title: '低功耗', subtitle: '6W - 15W' },
+          { icon: '🔌', title: '丰富接口', subtitle: 'HDMI / USB-C' },
+          { icon: '🔧', title: 'OEM/ODM', subtitle: '全面定制服务' }
+        ],
+        specs: {
+          headers: ['参数项目', '入门款', '标准款', '高性能款'],
+          rows: [
+            ['处理器', 'Intel N95', 'Intel N100', 'Intel Core i5'],
+            ['内存', '4GB DDR4', '8GB DDR4', '16GB DDR4'],
+            ['存储', '128GB SSD', '256GB SSD', '512GB SSD'],
+            ['显卡', '集成显卡', '集成显卡', 'Intel Iris Xe'],
+            ['接口', 'HDMI, USB×4', 'HDMI, DP, USB×6', 'HDMI×2, DP, USB×8'],
+            ['网络', 'WiFi 5, 千兆网口', 'WiFi 6, 2.5G网口', 'WiFi 6E, 2.5G网口'],
+            ['功耗', '6W', '10W', '25W'],
+            ['认证', 'CE / FCC', 'CE / FCC / RoHS', 'CE / FCC / RoHS / ISO9001']
+          ]
+        },
+        scenes: [
+          { icon: '🎬', title: '家庭影音', desc: '4K视频流畅播放，HDMI直连电视，安静无风扇或超低噪音设计。' },
+          { icon: '🏢', title: '办公应用', desc: '小巧放置显示器后，节省桌面空间，满足日常办公、视频会议需求。' },
+          { icon: '🏭', title: '工业控制', desc: '宽温设计，串口可选，适用于自动化设备、数控机床等工业场景。' },
+          { icon: '📊', title: '数字标牌', desc: '7×24小时稳定运行，支持多屏输出，适用于广告机、信息发布系统。' }
+        ],
+        oem: { items: ['外观定制：尺寸、颜色、LOGO均可按需调整', '配置定制：处理器、内存、存储、接口按项目需求配置', '系统集成：预装指定操作系统和应用软件', '散热方案：风扇/无风扇方案可选', '起订量：小批量起订，具体MOQ请咨询业务'] },
+        related: ['aio', 'display', 'desktop']
+      },
+      display: {
+        tag: '商业显示器', series: 'Display Series', title: '商显系列',
+        summary: '高亮度、宽视角、7×24小时稳定运行。广泛应用于广告宣传、数字标牌、会议室、零售展示等商业场景，支持OEM/ODM定制。',
+        highlights: [
+          { icon: '☀️', title: '500-2000 nits', subtitle: '高亮度可选' },
+          { icon: '👁️', title: '宽视角', subtitle: '178°可视角度' },
+          { icon: '⏰', title: '7×24小时', subtitle: '稳定运行' },
+          { icon: '🔧', title: 'OEM/ODM', subtitle: '全面定制服务' }
+        ],
+        specs: {
+          headers: ['参数项目', '标准款', '专业款', '旗舰款'],
+          rows: [
+            ['尺寸', '32" - 55"', '55" - 75"', '75" - 98"'],
+            ['亮度', '500 nits', '700 nits', '2000 nits（高亮版）'],
+            ['分辨率', 'FHD 1920×1080', 'FHD / 4K UHD', '4K UHD 3840×2160'],
+            ['对比度', '1200:1', '4000:1', '5000:1'],
+            ['视角', '178°/178°', '178°/178°', '178°/178°'],
+            ['色域', '72% NTSC', '90% DCI-P3', '95% DCI-P3'],
+            ['触屏', '不支持', '可选（红外/电容）', '标配（红外触控）'],
+            ['接口', 'HDMI×1, VGA×1', 'HDMI×2, DP×1', 'HDMI×2, DP×2, USB-C'],
+            ['运行时间', '16小时/天', '24小时/天', '7×24小时'],
+            ['认证', 'CE / FCC', 'CE / FCC / RoHS', 'CE / FCC / RoHS / IP65']
+          ]
+        },
+        scenes: [
+          { icon: '📺', title: '广告宣传', desc: '高亮度显示屏，阳光下清晰可见，支持分屏播放，远程内容管理。' },
+          { icon: '🏪', title: '零售展示', desc: '触摸交互可选，顾客可自主查询商品信息，提升购物体验。' },
+          { icon: '🏢', title: '会议室', desc: '4K高清显示，支持无线投屏，适用于企业会议室、培训室。' },
+          { icon: '📍', title: '数字标牌', desc: '7×24小时稳定运行，支持网络远程管理，降低运维成本。' }
+        ],
+        oem: { items: ['外观定制：边框、支架、颜色均可按需调整', '亮度定制：500-2000 nits 多档亮度可选', '触控定制：红外触控、电容触控、纳米触控可选', '系统定制：内置Android、Windows、信发系统可选', '起订量：小批量起订，具体MOQ请咨询业务'] },
+        related: ['aio', 'mini', 'desktop']
+      },
+      desktop: {
+        tag: '台式电脑', series: 'Desktop Series', title: '台式电脑系列',
+        summary: '高性能配置，支持高度个性化定制。满足图形设计、视频渲染、工程计算等高负载专业应用需求，支持OEM/ODM定制。',
+        highlights: [
+          { icon: '💻', title: '高性能', subtitle: 'Intel Core / AMD Ryzen' },
+          { icon: '🎮', title: '独显可选', subtitle: 'NVIDIA / AMD' },
+          { icon: '🔧', title: '高度定制', subtitle: '配置自选' },
+          { icon: '🔧', title: 'OEM/ODM', subtitle: '全面定制服务' }
+        ],
+        specs: {
+          headers: ['参数项目', '办公款', '设计款', '工作站款'],
+          rows: [
+            ['处理器', 'Intel Core i3 / i5', 'Intel Core i7 / i9', 'Intel Xeon / AMD Threadripper'],
+            ['内存', '8GB - 16GB DDR4', '16GB - 32GB DDR5', '32GB - 128GB ECC'],
+            ['显卡', '集显 / GT710', 'RTX 4060 / 4070', 'RTX 4090 / A5000'],
+            ['存储', '256GB SSD + 1TB HDD', '512GB - 1TB SSD', '2TB SSD + 4TB HDD'],
+            ['主板', 'Intel B系列', 'Intel Z系列 / AMD X系列', 'Intel W系列 / AMD TRX40'],
+            ['电源', '300W - 450W', '550W - 750W', '850W - 1200W'],
+            ['机箱', '微型塔式', '中塔式', '全塔式 / 静音机箱'],
+            ['扩展槽', 'PCIe×4', 'PCIe×7', 'PCIe×10'],
+            ['认证', 'CE / FCC', 'CE / FCC / RoHS', 'CE / FCC / RoHS / ISV认证']
+          ]
+        },
+        scenes: [
+          { icon: '🏢', title: '办公应用', desc: '稳定可靠的办公平台，支持多任务处理，满足企业日常办公需求。' },
+          { icon: '🎨', title: '图形设计', desc: '高性能CPU+独立显卡，色彩校准显示屏，适用于平面设计、视频剪辑。' },
+          { icon: '🏭', title: '工程计算', desc: '多核CPU+大内存，支持ECC校验，适用于CAD、仿真、科学计算。' },
+          { icon: '🎮', title: '游戏娱乐', desc: '高端显卡+高速CPU，支持4K游戏，适用于游戏厅、网吧。' }
+        ],
+        oem: { items: ['外观定制：机箱颜色、LOGO、尺寸比例均可按需调整', '配置定制：处理器、内存、显卡、存储按项目需求配置', '系统定制：预装指定操作系统和应用软件', '静音方案：静音机箱、被动散热可选', '起订量：小批量起订，具体MOQ请咨询业务'] },
+        related: ['aio', 'mini', 'display']
+      }
+    },
     company: {
       name: '广州龙到网络科技有限公司',
       nameEn: 'GUANGZHOU LONGDAO NETWORK TECHNOLOGY CO., LTD.',
@@ -713,6 +890,12 @@ function getDefaultData() {
       hours: '周一至周六 09:00 - 18:00',
       aboutP1: '广州龙到网络科技有限公司成立于广州，是一家专注于智能硬件研发、生产与销售的高新技术企业。公司主要经营一体机电脑、MINI主机、商业显示器（商显）及台式电脑等产品，并提供专业的OEM/ODM定制服务。',
       aboutP2: '经过多年发展，公司已形成完整的产品研发体系和成熟的制造工艺，产品覆盖教育、医疗、零售、金融等多个行业领域，深受国内外客户信赖。'
+    },
+    contact: {
+      title: '联系我们',
+      tag: 'CONTACT US',
+      subtitle: '期待与您合作，共创美好商业未来',
+      desc: '无论您有产品咨询、合作洽谈还是售后服务需求，我们的专业团队随时为您提供帮助。'
     },
     messages: []
   };
@@ -735,7 +918,7 @@ async function saveData() {
   if (!token) return;
   
   try {
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(appData, null, 2))));
+    // 先获取 GitHub 上现有文件的 SHA
     let sha = null;
     try {
       const existing = await fetch('https://api.github.com/repos/longdao888/longdao-website/contents/site-data.json?ref=main', {
@@ -744,6 +927,19 @@ async function saveData() {
       if (existing.ok) { const d = await existing.json(); sha = d.sha; }
     } catch (e) {}
     
+    // 合并完整数据结构（保留 homepage、productDetails 等字段）
+    const siteData = {
+      version: '1.0',
+      updatedAt: new Date().toISOString(),
+      banners: appData.banners || [],
+      homepage: appData.homepage || null,
+      products: appData.products || [],
+      productDetails: appData.productDetails || null,
+      company: appData.company || {},
+      contact: appData.contact || null
+    };
+    
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(siteData, null, 2))));
     const payload = { message: 'admin: update site-data.json', content, branch: 'main' };
     if (sha) payload.sha = sha;
     
@@ -753,9 +949,14 @@ async function saveData() {
       body: JSON.stringify(payload)
     });
     
-    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    if (!resp.ok) {
+      const errText = await resp.text();
+      throw new Error('HTTP ' + resp.status + ': ' + errText);
+    }
+    showToast('✅ 已同步到 GitHub', 'success');
   } catch (e) {
-    console.warn('[saveData] GitHub 同步失败:', e.message);
+    console.error('[saveData] GitHub 同步失败:', e);
+    showToast('⚠️ GitHub 同步失败：' + e.message, 'error');
   }
 }
 
