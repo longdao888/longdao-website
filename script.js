@@ -5,7 +5,7 @@
 /* ---------- 全局状态 ---------- */
 let currentSlide = 0;
 let slideInterval = null;
-const SLIDE_DURATION = 5000;
+const SLIDE_DURATION = 7000;
 let menuOpen = false;
 
 /* ========== 首页轮播 ========== */
