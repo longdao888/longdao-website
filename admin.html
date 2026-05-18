@@ -1137,10 +1137,21 @@ function buildDetailForm(type, d) {
     <div class="detail-section">
       <div class="detail-section-title">基本信息</div>
       <div class="form-row">
-        <div class="form-group"><label>标签（如：一体机电脑）</label><input class="spec-table-input" id="dh_${type}_tag" value="${escAttr(d.tag||'')}" /></div>
-        <div class="form-group"><label>英文系列名（如：AIO Series）</label><input class="spec-table-input" id="dh_${type}_series" value="${escAttr(d.series||'')}" /></div>
+        <div class="form-group">
+          <label>标签（如：一体机电脑）</label>
+          <input class="spec-table-input" id="dh_${type}_tag" value="${escAttr(d.tag||'')}" />
+        </div>
+        <div class="form-group">
+          <label>产品主图路径</label>
+          <input class="spec-table-input" id="dh_${type}_heroImage" value="${escAttr(d.heroImage||'')}" placeholder="如：images/aio-hero.webp" />
+          <button type="button" class="btn btn-outline btn-sm" style="margin-top:4px" onclick="openImagePicker(function(url){document.getElementById('dh_${type}_heroImage').value=url;document.getElementById('dh_${type}_heroPreview').src=url;document.getElementById('dh_${type}_heroPreview').style.display='block';})">📁 从图库选择</button>
+          <img id="dh_${type}_heroPreview" class="product-img-preview" style="display:${d.heroImage?'block':'none'}" src="${escAttr(d.heroImage||'')}" />
+        </div>
       </div>
-      <div class="form-group"><label>产品标题</label><input class="spec-table-input" id="dh_${type}_title" value="${escAttr(d.title||'')}" /></div>
+      <div class="form-row">
+        <div class="form-group"><label>英文系列名（如：AIO Series）</label><input class="spec-table-input" id="dh_${type}_series" value="${escAttr(d.series||'')}" /></div>
+        <div class="form-group"><label>产品标题</label><input class="spec-table-input" id="dh_${type}_title" value="${escAttr(d.title||'')}" /></div>
+      </div>
       <div class="form-group">
         <label>产品简介</label>
         <textarea class="spec-table-input" id="dh_${type}_summary" rows="3">${escAttr(d.summary||'')}</textarea>
@@ -1198,6 +1209,7 @@ function saveProductDetail() {
   if (!d[type]) d[type] = {};
 
   d[type].tag = document.getElementById('dh_' + type + '_tag').value.trim();
+  d[type].heroImage = document.getElementById('dh_' + type + '_heroImage').value.trim();
   d[type].series = document.getElementById('dh_' + type + '_series').value.trim();
   d[type].title = document.getElementById('dh_' + type + '_title').value.trim();
   d[type].summary = document.getElementById('dh_' + type + '_summary').value.trim();
