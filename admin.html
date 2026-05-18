@@ -1077,50 +1077,18 @@ function initDetailEditor() {
 }
 
 function buildDetailForm(type, d) {
-  const h = d.highlights || [];
-  const scenes = d.scenes || [];
-  const specs = d.specs || { headers: ['','','',''], rows: [] };
   const oemItems = d.oem ? (d.oem.items || []) : [];
   const related = d.related || [];
 
   let highlightsHtml = '';
   for (let i = 0; i < 4; i++) {
-    const hi = h[i] || {};
+    const hi = d.highlights ? d.highlights[i] || {} : {};
     highlightsHtml += `
       <div class="highlight-item">
         <input class="spec-table-input" id="dh_${type}_hi${i}_icon" value="${escAttr(hi.icon||'')}" placeholder="图标如🖥" />
         <input class="spec-table-input" id="dh_${type}_hi${i}_title" value="${escAttr(hi.title||'')}" placeholder="标题" />
         <input class="spec-table-input" id="dh_${type}_hi${i}_sub" value="${escAttr(hi.subtitle||'')}" placeholder="副标题" />
       </div>`;
-  }
-
-  let scenesHtml = '';
-  for (let i = 0; i < Math.max(4, scenes.length); i++) {
-    const sc = scenes[i] || {};
-    scenesHtml += `
-      <div class="scene-item">
-        <input class="spec-table-input" id="dh_${type}_sc${i}_icon" value="${escAttr(sc.icon||'')}" placeholder="🏪" />
-        <div>
-          <input class="spec-table-input" id="dh_${type}_sc${i}_title" value="${escAttr(sc.title||'')}" placeholder="场景标题" style="margin-bottom:4px" />
-          <textarea class="spec-table-input" id="dh_${type}_sc${i}_desc" rows="2" placeholder="场景描述">${escAttr(sc.desc||'')}</textarea>
-        </div>
-      </div>`;
-  }
-
-  // specs headers
-  let headersHtml = specs.headers.map((h, i) =>
-    `<input class="spec-table-input" id="dh_${type}_specH${i}" value="${escAttr(h)}" placeholder="列${i+1}标题" />`
-  ).join('');
-
-  // specs rows
-  let rowsHtml = '';
-  const numRows = Math.max(5, specs.rows.length);
-  for (let r = 0; r < numRows; r++) {
-    const row = specs.rows[r] || [];
-    let cells = specs.headers.map((_, c) =>
-      `<input class="spec-table-input" id="dh_${type}_specR${r}C${c}" value="${escAttr(row[c]||'')}" placeholder="-" />`
-    ).join('');
-    rowsHtml += `<div style="display:grid;grid-template-columns:1fr repeat(${specs.headers.length},1fr);gap:8px;margin-bottom:6px;align-items:center">${cells}</div>`;
   }
 
   let oemHtml = '';
@@ -1152,27 +1120,34 @@ function buildDetailForm(type, d) {
         <div class="form-group"><label>英文系列名（如：AIO Series）</label><input class="spec-table-input" id="dh_${type}_series" value="${escAttr(d.series||'')}" /></div>
         <div class="form-group"><label>产品标题</label><input class="spec-table-input" id="dh_${type}_title" value="${escAttr(d.title||'')}" /></div>
       </div>
-      <div class="form-group">
-        <label>产品简介</label>
-        <textarea class="spec-table-input" id="dh_${type}_summary" rows="3">${escAttr(d.summary||'')}</textarea>
-      </div>
     </div>
     <div class="detail-section">
       <div class="detail-section-title">产品亮点（4项）</div>
       ${highlightsHtml}
     </div>
     <div class="detail-section">
-      <div class="detail-section-title">参数对比表</div>
-      <div style="display:grid;grid-template-columns:1fr repeat(${specs.headers.length},1fr);gap:8px;margin-bottom:12px">
-        <div></div>${headersHtml}
-      </div>
-      <div style="display:grid;grid-template-columns:1fr repeat(${specs.headers.length},1fr);gap:0" id="dh_${type}_specGrid">
-        <div style="grid-column:1/-1">${rowsHtml}</div>
+      <div class="detail-section-title">产品详情介绍（图片）</div>
+      <div class="form-group">
+        <input class="spec-table-input" id="dh_${type}_detailImage" value="${escAttr(d.detailImage||'')}" placeholder="选择详情介绍图片" />
+        <button type="button" class="btn btn-outline btn-sm" style="margin-top:4px" onclick="openImagePicker(function(url){document.getElementById('dh_${type}_detailImage').value=url;document.getElementById('dh_${type}_detailImagePreview').src=url;document.getElementById('dh_${type}_detailImagePreview').style.display='block';})">📁 从图库选择</button>
+        <img id="dh_${type}_detailImagePreview" class="product-img-preview" style="display:${d.detailImage?'block':'none'}" src="${escAttr(d.detailImage||'')}" />
       </div>
     </div>
     <div class="detail-section">
-      <div class="detail-section-title">应用场景</div>
-      ${scenesHtml}
+      <div class="detail-section-title">产品规格参数（图片）</div>
+      <div class="form-group">
+        <input class="spec-table-input" id="dh_${type}_specImage" value="${escAttr(d.specImage||'')}" placeholder="选择参数表图片" />
+        <button type="button" class="btn btn-outline btn-sm" style="margin-top:4px" onclick="openImagePicker(function(url){document.getElementById('dh_${type}_specImage').value=url;document.getElementById('dh_${type}_specImagePreview').src=url;document.getElementById('dh_${type}_specImagePreview').style.display='block';})">📁 从图库选择</button>
+        <img id="dh_${type}_specImagePreview" class="product-img-preview" style="display:${d.specImage?'block':'none'}" src="${escAttr(d.specImage||'')}" />
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">应用场景（图片）</div>
+      <div class="form-group">
+        <input class="spec-table-input" id="dh_${type}_sceneImage" value="${escAttr(d.sceneImage||'')}" placeholder="选择应用场景图片" />
+        <button type="button" class="btn btn-outline btn-sm" style="margin-top:4px" onclick="openImagePicker(function(url){document.getElementById('dh_${type}_sceneImage').value=url;document.getElementById('dh_${type}_sceneImagePreview').src=url;document.getElementById('dh_${type}_sceneImagePreview').style.display='block';})">📁 从图库选择</button>
+        <img id="dh_${type}_sceneImagePreview" class="product-img-preview" style="display:${d.sceneImage?'block':'none'}" src="${escAttr(d.sceneImage||'')}" />
+      </div>
     </div>
     <div class="detail-section">
       <div class="detail-section-title">OEM/ODM 定制说明</div>
@@ -1212,7 +1187,12 @@ function saveProductDetail() {
   d[type].heroImage = document.getElementById('dh_' + type + '_heroImage').value.trim();
   d[type].series = document.getElementById('dh_' + type + '_series').value.trim();
   d[type].title = document.getElementById('dh_' + type + '_title').value.trim();
-  d[type].summary = document.getElementById('dh_' + type + '_summary').value.trim();
+  // 产品详情介绍图片
+  d[type].detailImage = document.getElementById('dh_' + type + '_detailImage').value.trim();
+  // 产品规格参数图片
+  d[type].specImage = document.getElementById('dh_' + type + '_specImage').value.trim();
+  // 应用场景图片
+  d[type].sceneImage = document.getElementById('dh_' + type + '_sceneImage').value.trim();
 
   // highlights
   const highlights = [];
@@ -1224,32 +1204,6 @@ function saveProductDetail() {
     });
   }
   d[type].highlights = highlights;
-
-  // specs
-  const headers = [];
-  for (let i = 0; i < 4; i++) {
-    headers.push(document.getElementById('dh_' + type + '_specH' + i).value.trim());
-  }
-  const rows = [];
-  const numRows = 10;
-  for (let r = 0; r < numRows; r++) {
-    const row = [];
-    for (let c = 0; c < 4; c++) {
-      row.push(document.getElementById('dh_' + type + '_specR' + r + 'C' + c).value.trim());
-    }
-    if (row.some(v => v)) rows.push(row);
-  }
-  d[type].specs = { headers, rows };
-
-  // scenes
-  const scenes = [];
-  for (let i = 0; i < 8; i++) {
-    const icon = document.getElementById('dh_' + type + '_sc' + i + '_icon').value.trim();
-    const title = document.getElementById('dh_' + type + '_sc' + i + '_title').value.trim();
-    const desc = document.getElementById('dh_' + type + '_sc' + i + '_desc').value.trim();
-    if (icon || title || desc) scenes.push({ icon, title, desc });
-  }
-  d[type].scenes = scenes;
 
   // oem
   const oemItems = [];
