@@ -284,6 +284,22 @@
       color: var(--text-2);
     }
 
+    /* 产品详情编辑 */
+    .detail-section { margin-bottom: 24px; }
+    .detail-section-title { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .highlight-item { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 10px; margin-bottom: 10px; align-items: center; }
+    .scene-item { display: grid; grid-template-columns: 60px 1fr; gap: 8px; margin-bottom: 10px; }
+    .scene-item textarea { min-height: 60px; }
+    .spec-table-input { width: 100%; border: 1.5px solid var(--border); border-radius: 6px; padding: 7px 10px; font-size: 13px; font-family: inherit; outline: none; }
+    .spec-table-input:focus { border-color: var(--primary); }
+    .spec-cols-grid { display: grid; gap: 8px; margin-bottom: 12px; }
+    .spec-row-grid { display: grid; gap: 8px; align-items: center; }
+    .oem-item-row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .related-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .related-tag { padding: 4px 12px; border-radius: 20px; font-size: 12px; background: var(--bg); border: 1.5px solid var(--border); cursor: pointer; transition: all 0.15s; }
+    .related-tag.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .product-img-preview { max-width: 200px; max-height: 120px; border-radius: 6px; object-fit: cover; margin-top: 8px; border: 1px solid var(--border); }
+
     /* 发布状态提示 */
     .publish-bar {
       display: none; padding: 12px 20px; border-radius: 8px;
@@ -331,6 +347,7 @@
     <div class="sidebar-link active" data-panel="dashboard"><span class="nav-icon">📊</span> 数据概览</div>
     <div class="nav-section-title">内容管理</div>
     <div class="sidebar-link" data-panel="products"><span class="nav-icon">📦</span> 产品管理</div>
+    <div class="sidebar-link" data-panel="product-details"><span class="nav-icon">📋</span> 产品详情</div>
     <div class="sidebar-link" data-panel="banners"><span class="nav-icon">🖼</span> 轮播图管理</div>
     <div class="sidebar-link" data-panel="gallery"><span class="nav-icon">📁</span> 图库管理</div>
     <div class="sidebar-link" data-panel="company"><span class="nav-icon">🏢</span> 公司信息</div>
@@ -395,7 +412,7 @@
       </div>
       <div class="card-body" style="padding:0">
         <table class="data-table" id="productTable">
-          <thead><tr><th>产品名称</th><th>分类</th><th>规格亮点</th><th>详情页</th><th>状态</th><th>操作</th></tr></thead>
+          <thead><tr><th>缩略图</th><th>产品名称</th><th>分类</th><th>规格亮点</th><th>详情页</th><th>状态</th><th>操作</th></tr></thead>
           <tbody id="productTbody"></tbody>
         </table>
       </div>
@@ -420,6 +437,29 @@
         <p>2. 图片建议尺寸：<strong>1920×749px</strong>，支持JPG/WebP格式。</p>
         <p>3. 修改后请点击"保存并发布"使更改生效。</p>
         <p>4. 目前使用本地存储，如需持久化请对接 Cloudflare Workers API。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 产品详情管理面板 -->
+  <div class="panel" id="panel-product-details">
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-header">
+        <h3>📋 产品详情管理</h3>
+        <button class="btn btn-primary" onclick="saveProductDetail()">💾 保存当前</button>
+      </div>
+      <div class="card-body">
+        <p style="font-size:13px;color:var(--text-2);margin-bottom:16px">选择产品分类后，可编辑该产品详情页的文字内容。图片请使用上方「图库管理」上传后再填写路径。</p>
+        <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap" id="detailTypeTabs">
+          <button class="btn btn-primary btn-sm" onclick="switchDetailType('aio')" id="tab-aio">🖥 一体机</button>
+          <button class="btn btn-outline btn-sm" onclick="switchDetailType('mini')" id="tab-mini">📦 迷你主机</button>
+          <button class="btn btn-outline btn-sm" onclick="switchDetailType('display')" id="tab-display">📺 商显</button>
+          <button class="btn btn-outline btn-sm" onclick="switchDetailType('desktop')" id="tab-desktop">💻 台式机</button>
+        </div>
+        <div style="display:none" id="detail-edit-aio" class="detail-edit-panel"></div>
+        <div style="display:none" id="detail-edit-mini" class="detail-edit-panel"></div>
+        <div style="display:none" id="detail-edit-display" class="detail-edit-panel"></div>
+        <div style="display:none" id="detail-edit-desktop" class="detail-edit-panel"></div>
       </div>
     </div>
   </div>
@@ -617,6 +657,13 @@
         <label>详情页链接</label>
         <input type="text" id="pDetailUrl" placeholder="如：product-aio.html" />
       </div>
+      <div class="form-group">
+        <label>产品图片路径</label>
+        <input type="text" id="pImage" placeholder="如：images/logo.webp" />
+        <button type="button" class="btn btn-outline btn-sm" style="margin-top:6px" onclick="openImagePicker(function(url){document.getElementById('pImage').value=url;document.getElementById('pImagePreview').src=url;})">📁 从图库选择</button>
+        <img id="pImagePreview" class="product-img-preview" style="display:none" />
+      </div>
+    </div>
       <div class="form-group">
         <label>状态</label>
         <select id="pStatus">
@@ -973,7 +1020,7 @@ function showToast(msg, type = 'default') {
 }
 
 /* ===== 面板切换 ===== */
-const panelTitles = { dashboard: '数据概览', products: '产品管理', banners: '轮播图管理', company: '公司信息', messages: '留言管理', settings: '系统设置' };
+const panelTitles = { dashboard: '数据概览', products: '产品管理', 'product-details': '产品详情', banners: '轮播图管理', company: '公司信息', messages: '留言管理', settings: '系统设置' };
 function switchPanel(name) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
@@ -986,6 +1033,7 @@ function switchPanel(name) {
   if (name === 'company') loadCompany();
   if (name === 'messages') renderMessages();
   if (name === 'settings') loadSettings();
+  if (name === 'product-details') { if (!window._detailInited) { initDetailEditor(); window._detailInited = true; } switchDetailType(window._currentDetailType || 'aio'); }
 }
 
 document.querySelectorAll('.sidebar-link').forEach(link => {
@@ -1015,6 +1063,241 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
     document.getElementById('loginPage').style.display = 'flex';
   }
 });
+
+/* ===== 产品详情编辑器 ===== */
+const DETAIL_TYPES = ['aio', 'mini', 'display', 'desktop'];
+const DETAIL_LABELS = { aio: '一体机电脑', mini: '迷你主机', display: '商业显示器', desktop: '台式电脑' };
+
+function initDetailEditor() {
+  DETAIL_TYPES.forEach(type => {
+    const el = document.getElementById('detail-edit-' + type);
+    const d = (appData.productDetails && appData.productDetails[type]) || {};
+    el.innerHTML = buildDetailForm(type, d);
+  });
+}
+
+function buildDetailForm(type, d) {
+  const h = d.highlights || [];
+  const scenes = d.scenes || [];
+  const specs = d.specs || { headers: ['','','',''], rows: [] };
+  const oemItems = d.oem ? (d.oem.items || []) : [];
+  const related = d.related || [];
+
+  let highlightsHtml = '';
+  for (let i = 0; i < 4; i++) {
+    const hi = h[i] || {};
+    highlightsHtml += `
+      <div class="highlight-item">
+        <input class="spec-table-input" id="dh_${type}_hi${i}_icon" value="${escAttr(hi.icon||'')}" placeholder="图标如🖥" />
+        <input class="spec-table-input" id="dh_${type}_hi${i}_title" value="${escAttr(hi.title||'')}" placeholder="标题" />
+        <input class="spec-table-input" id="dh_${type}_hi${i}_sub" value="${escAttr(hi.subtitle||'')}" placeholder="副标题" />
+      </div>`;
+  }
+
+  let scenesHtml = '';
+  for (let i = 0; i < Math.max(4, scenes.length); i++) {
+    const sc = scenes[i] || {};
+    scenesHtml += `
+      <div class="scene-item">
+        <input class="spec-table-input" id="dh_${type}_sc${i}_icon" value="${escAttr(sc.icon||'')}" placeholder="🏪" />
+        <div>
+          <input class="spec-table-input" id="dh_${type}_sc${i}_title" value="${escAttr(sc.title||'')}" placeholder="场景标题" style="margin-bottom:4px" />
+          <textarea class="spec-table-input" id="dh_${type}_sc${i}_desc" rows="2" placeholder="场景描述">${escAttr(sc.desc||'')}</textarea>
+        </div>
+      </div>`;
+  }
+
+  // specs headers
+  let headersHtml = specs.headers.map((h, i) =>
+    `<input class="spec-table-input" id="dh_${type}_specH${i}" value="${escAttr(h)}" placeholder="列${i+1}标题" />`
+  ).join('');
+
+  // specs rows
+  let rowsHtml = '';
+  const numRows = Math.max(5, specs.rows.length);
+  for (let r = 0; r < numRows; r++) {
+    const row = specs.rows[r] || [];
+    let cells = specs.headers.map((_, c) =>
+      `<input class="spec-table-input" id="dh_${type}_specR${r}C${c}" value="${escAttr(row[c]||'')}" placeholder="-" />`
+    ).join('');
+    rowsHtml += `<div style="display:grid;grid-template-columns:1fr repeat(${specs.headers.length},1fr);gap:8px;margin-bottom:6px;align-items:center">${cells}</div>`;
+  }
+
+  let oemHtml = '';
+  for (let i = 0; i < Math.max(5, oemItems.length); i++) {
+    oemHtml += `<input class="spec-table-input" id="dh_${type}_oem${i}" value="${escAttr(oemItems[i]||'')}" placeholder="OEM项目${i+1}" />`;
+  }
+
+  const relatedOptions = DETAIL_TYPES.filter(t => t !== type);
+  let relatedHtml = relatedOptions.map(t =>
+    `<span class="related-tag ${(related||[]).includes(t)?'active':''}" onclick="toggleRelatedTag('${type}','${t}',this)" data-type="${type}" data-tag="${t}">${DETAIL_LABELS[t]}</span>`
+  ).join('');
+
+  return `
+    <div class="detail-section">
+      <div class="detail-section-title">基本信息</div>
+      <div class="form-row">
+        <div class="form-group"><label>标签（如：一体机电脑）</label><input class="spec-table-input" id="dh_${type}_tag" value="${escAttr(d.tag||'')}" /></div>
+        <div class="form-group"><label>英文系列名（如：AIO Series）</label><input class="spec-table-input" id="dh_${type}_series" value="${escAttr(d.series||'')}" /></div>
+      </div>
+      <div class="form-group"><label>产品标题</label><input class="spec-table-input" id="dh_${type}_title" value="${escAttr(d.title||'')}" /></div>
+      <div class="form-group">
+        <label>产品简介</label>
+        <textarea class="spec-table-input" id="dh_${type}_summary" rows="3">${escAttr(d.summary||'')}</textarea>
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">产品亮点（4项）</div>
+      ${highlightsHtml}
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">参数对比表</div>
+      <div style="display:grid;grid-template-columns:1fr repeat(${specs.headers.length},1fr);gap:8px;margin-bottom:12px">
+        <div></div>${headersHtml}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr repeat(${specs.headers.length},1fr);gap:0" id="dh_${type}_specGrid">
+        <div style="grid-column:1/-1">${rowsHtml}</div>
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">应用场景</div>
+      ${scenesHtml}
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">OEM/ODM 定制说明</div>
+      ${oemHtml}
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-title">关联产品（相关推荐）</div>
+      <div class="related-tags">${relatedHtml}</div>
+    </div>
+  `;
+}
+
+function toggleRelatedTag(type, tag, el) {
+  el.classList.toggle('active');
+}
+
+window._currentDetailType = 'aio';
+
+function switchDetailType(type) {
+  window._currentDetailType = type;
+  document.querySelectorAll('.detail-edit-panel').forEach(p => p.style.display = 'none');
+  document.getElementById('detail-edit-' + type).style.display = 'block';
+  document.querySelectorAll('#detailTypeTabs .btn').forEach(btn => {
+    btn.classList.remove('btn-primary');
+    btn.classList.add('btn-outline');
+  });
+  document.getElementById('tab-' + type).classList.remove('btn-outline');
+  document.getElementById('tab-' + type).classList.add('btn-primary');
+}
+
+function saveProductDetail() {
+  const type = window._currentDetailType;
+  const d = appData.productDetails || {};
+  if (!d[type]) d[type] = {};
+
+  d[type].tag = document.getElementById('dh_' + type + '_tag').value.trim();
+  d[type].series = document.getElementById('dh_' + type + '_series').value.trim();
+  d[type].title = document.getElementById('dh_' + type + '_title').value.trim();
+  d[type].summary = document.getElementById('dh_' + type + '_summary').value.trim();
+
+  // highlights
+  const highlights = [];
+  for (let i = 0; i < 4; i++) {
+    highlights.push({
+      icon: document.getElementById('dh_' + type + '_hi' + i + '_icon').value.trim(),
+      title: document.getElementById('dh_' + type + '_hi' + i + '_title').value.trim(),
+      subtitle: document.getElementById('dh_' + type + '_hi' + i + '_sub').value.trim()
+    });
+  }
+  d[type].highlights = highlights;
+
+  // specs
+  const headers = [];
+  for (let i = 0; i < 4; i++) {
+    headers.push(document.getElementById('dh_' + type + '_specH' + i).value.trim());
+  }
+  const rows = [];
+  const numRows = 10;
+  for (let r = 0; r < numRows; r++) {
+    const row = [];
+    for (let c = 0; c < 4; c++) {
+      row.push(document.getElementById('dh_' + type + '_specR' + r + 'C' + c).value.trim());
+    }
+    if (row.some(v => v)) rows.push(row);
+  }
+  d[type].specs = { headers, rows };
+
+  // scenes
+  const scenes = [];
+  for (let i = 0; i < 8; i++) {
+    const icon = document.getElementById('dh_' + type + '_sc' + i + '_icon').value.trim();
+    const title = document.getElementById('dh_' + type + '_sc' + i + '_title').value.trim();
+    const desc = document.getElementById('dh_' + type + '_sc' + i + '_desc').value.trim();
+    if (icon || title || desc) scenes.push({ icon, title, desc });
+  }
+  d[type].scenes = scenes;
+
+  // oem
+  const oemItems = [];
+  for (let i = 0; i < 8; i++) {
+    const v = document.getElementById('dh_' + type + '_oem' + i).value.trim();
+    if (v) oemItems.push(v);
+  }
+  d[type].oem = { items: oemItems };
+
+  // related
+  const related = [];
+  document.querySelectorAll('.related-tag.active[data-type="' + type + '"]').forEach(el => {
+    related.push(el.dataset.tag);
+  });
+  d[type].related = related;
+
+  appData.productDetails = d;
+  saveData();
+  showToast(DETAIL_LABELS[type] + ' 详情已保存', 'success');
+}
+
+function escAttr(s) {
+  if (s == null) return '';
+  return String(s).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+/* ===== 产品管理增强：保存/加载图片字段 ===== */
+const _origSaveProduct = window.saveProduct;
+window.saveProduct = function() {
+  const editId = document.getElementById('editProductId').value;
+  _origSaveProduct();
+  if (editId) {
+    const idx = appData.products.findIndex(p => p.id === editId);
+    if (idx >= 0) {
+      appData.products[idx].image = document.getElementById('pImage').value.trim() || 'images/logo.webp';
+      saveData();
+    }
+  }
+};
+
+const _origOpenProductModal = window.openProductModal;
+window.openProductModal = function(id) {
+  _origOpenProductModal(id);
+  if (id) {
+    const p = appData.products.find(x => x.id === id);
+    if (p) {
+      document.getElementById('pImage').value = p.image || '';
+      const preview = document.getElementById('pImagePreview');
+      if (p.image) {
+        preview.src = p.image;
+        preview.style.display = 'block';
+      } else {
+        preview.style.display = 'none';
+      }
+    }
+  } else {
+    document.getElementById('pImage').value = '';
+    document.getElementById('pImagePreview').style.display = 'none';
+  }
+};
 
 /* ===== 概览面板 ===== */
 function renderDashboard() {
@@ -1047,11 +1330,12 @@ const catLabels = { aio:'一体机电脑', mini:'MINI主机', display:'商业显
 function renderProducts() {
   const tbody = document.getElementById('productTbody');
   if (appData.products.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6"><div class="empty-state"><p>暂无产品，点击"新增产品"添加</p></div></td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><p>暂无产品，点击"新增产品"添加</p></div></td></tr>';
     return;
   }
   tbody.innerHTML = appData.products.map(p => `
     <tr>
+      <td><img src="${escHtml(p.image||'images/logo.webp')}" alt="" style="width:60px;height:40px;object-fit:cover;border-radius:4px;border:1px solid var(--border)" /></td>
       <td><strong>${escHtml(p.name)}</strong></td>
       <td><span class="badge badge-blue">${catLabels[p.category] || p.category}</span></td>
       <td style="font-size:12px;color:var(--text-2)">${(p.specs||[]).slice(0,2).map(s=>escHtml(s)).join('<br>')}</td>
