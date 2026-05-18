@@ -726,8 +726,37 @@ function loadData() {
   return getDefaultData();
 }
 
-function saveData() {
+async function saveData() {
+  // 保存到 localStorage
   localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+  
+  // 同时保存到 GitHub
+  const token = loadToken();
+  if (!token) return;
+  
+  try {
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(appData, null, 2))));
+    let sha = null;
+    try {
+      const existing = await fetch('https://api.github.com/repos/longdao888/longdao-website/contents/site-data.json?ref=main', {
+        headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (existing.ok) { const d = await existing.json(); sha = d.sha; }
+    } catch (e) {}
+    
+    const payload = { message: 'admin: update site-data.json', content, branch: 'main' };
+    if (sha) payload.sha = sha;
+    
+    const resp = await fetch('https://api.github.com/repos/longdao888/longdao-website/contents/site-data.json', {
+      method: 'PUT',
+      headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+  } catch (e) {
+    console.warn('[saveData] GitHub 同步失败:', e.message);
+  }
 }
 
 let appData = loadData();
