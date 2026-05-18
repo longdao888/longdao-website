@@ -68,7 +68,7 @@
       "specs": ["屏幕尺寸：19\" - 27\"", "处理器：Intel / AMD可选", "内存：8GB - 32GB", "支持触控：选配"],
       "detailUrl": "product-aio.html",
       "status": "published",
-      "image": "images/product-aio.png"
+      "image": "images/logo.webp"
     },
     {
       "id": "p2",
@@ -78,7 +78,7 @@
       "specs": ["体积：极致小巧", "处理器：Intel N95 / N100", "功耗：6W - 15W", "接口：HDMI / USB-C"],
       "detailUrl": "product-mini.html",
       "status": "published",
-      "image": "images/product-mini.png"
+      "image": "images/logo.webp"
     },
     {
       "id": "p3",
@@ -88,7 +88,7 @@
       "specs": ["尺寸：32\" - 98\"", "亮度：500 - 2000 nits", "分辨率：FHD / 4K UHD", "运行时间：7×24小时"],
       "detailUrl": "product-display.html",
       "status": "published",
-      "image": "images/product-display.png"
+      "image": "images/logo.webp"
     },
     {
       "id": "p4",
@@ -98,7 +98,7 @@
       "specs": ["处理器：Intel Core / AMD Ryzen", "内存：16GB - 128GB", "显卡：集显 / 独显可选", "存储：SSD + HDD"],
       "detailUrl": "product-desktop.html",
       "status": "published",
-      "image": "images/product-desktop.png"
+      "image": "images/logo.webp"
     }
   ],
   "productDetails": {
