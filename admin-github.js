@@ -172,20 +172,19 @@ window.triggerImageUpload = function() {
 };
 
 window.handleImageUpload = async function(event) {
-  console.log('[DEBUG] handleImageUpload 触发，文件：', event.target.files[0]?.name);
   const file = event.target.files[0];
   if (!file) return;
   if (!file.type.startsWith('image/')) { showToast('请选择图片文件', 'error'); return; }
 
-  const btn = event.target.closest('.card').querySelector('.btn-primary');
-  const origText = btn.textContent;
-  btn.textContent = '压缩上传中...';
-  btn.disabled = true;
+  // 直接在 panel-gallery 中查找上传按钮（input 不在 .card 内，不能用 closest）
+  const panel = document.getElementById('panel-gallery');
+  const btn = panel ? panel.querySelector('.btn-primary') : null;
+  const origText = btn ? btn.textContent : '';
+  if (btn) { btn.textContent = '上传中...'; btn.disabled = true; }
 
   try {
-    console.log('[DEBUG] 开始压缩图片...');
+    showToast('正在压缩图片...', 'info');
     const blob = await compressImage(file, 1920);
-    console.log('[DEBUG] 压缩完成，大小：', blob.size, 'bytes');
 
     const base64 = await new Promise((resolve, reject) => {
       const r = new FileReader();
@@ -196,8 +195,8 @@ window.handleImageUpload = async function(event) {
 
     const name = file.name.replace(/\.[^.]+$/, '') + '.webp';
     const path = 'images/' + name;
-    console.log('[DEBUG] 准备上传到 GitHub：', path);
 
+    showToast('正在上传到 GitHub...', 'info');
     let sha = null;
     try {
       const existing = await fetch(GH_API + '/repos/' + GH_REPO + '/contents/' + path + '?ref=main', {
@@ -207,14 +206,12 @@ window.handleImageUpload = async function(event) {
     } catch (e) {}
 
     await githubUpload(path, base64, 'upload: ' + name, sha);
-    showToast('图片已上传：' + name, 'success');
+    showToast('✅ 图片已上传：' + name, 'success');
     renderGallery();
   } catch (e) {
-    console.error('[DEBUG] 上传失败：', e);
     showToast('上传失败：' + e.message, 'error');
   } finally {
-    btn.textContent = origText;
-    btn.disabled = false;
+    if (btn) { btn.textContent = origText; btn.disabled = false; }
     event.target.value = '';
   }
 };
