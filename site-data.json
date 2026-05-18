@@ -1,17 +1,11 @@
 {
   "version": "1.0",
-  "updatedAt": "2026-05-18T07:31:11.010Z",
+  "updatedAt": "2026-05-18T07:32:56.812Z",
   "banners": [
     {
       "id": "b1",
       "src": "images/hero-banner-1.webp",
       "alt": "广州龙到网络科技 - 智能硬件制造专家",
-      "link": ""
-    },
-    {
-      "id": "b1779089470471",
-      "src": "images/logo.png",
-      "alt": "",
       "link": ""
     }
   ],
