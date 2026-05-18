@@ -159,12 +159,21 @@ function updateProductDetail(data, type) {
   const tagEl = document.querySelector('.product-tag');
   const seriesEl = document.querySelector('.pd-series');
   const titleH1 = document.querySelector('.pd-title');
-  const summaryEl = document.querySelector('.pd-summary');
+  const titleH1 = document.querySelector('.pd-title');
 
   if (tagEl && pd.tag) tagEl.textContent = pd.tag;
   if (seriesEl && pd.series) seriesEl.textContent = pd.series;
   if (titleH1 && pd.title) titleH1.textContent = pd.title;
-  if (summaryEl && pd.summary) summaryEl.textContent = pd.summary;
+
+  // 产品详情介绍图片
+  const detailImgEl = document.querySelector('.pd-detail-image');
+  if (detailImgEl) {
+    if (pd.detailImage) {
+      detailImgEl.innerHTML = `<img src="${pd.detailImage}" alt="产品详情介绍" style="max-width:100%;border-radius:8px;" />`;
+    } else {
+      detailImgEl.innerHTML = '';
+    }
+  }
 
   // 更新高亮信息
   if (pd.highlights) {
@@ -179,34 +188,23 @@ function updateProductDetail(data, type) {
     }
   }
 
-  // 更新规格参数表
-  if (pd.specs) {
-    const specTable = document.querySelector('.spec-table');
-    if (specTable) {
-      const thead = specTable.querySelector('thead tr');
-      const tbody = specTable.querySelector('tbody');
-      if (thead && pd.specs.headers) {
-        thead.innerHTML = pd.specs.headers.map(h => `<th>${h}</th>`).join('');
-      }
-      if (tbody && pd.specs.rows) {
-        tbody.innerHTML = pd.specs.rows.map(row => 
-          `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`
-        ).join('');
-      }
+  // 产品规格参数图片
+  const specImgEl = document.querySelector('.pd-spec-image');
+  if (specImgEl) {
+    if (pd.specImage) {
+      specImgEl.innerHTML = `<img src="${pd.specImage}" alt="产品规格参数" style="max-width:100%;border-radius:8px;" />`;
+    } else {
+      specImgEl.innerHTML = '';
     }
   }
 
-  // 更新应用场景
-  if (pd.scenes) {
-    const sceneGrid = document.querySelector('.scene-grid');
-    if (sceneGrid) {
-      sceneGrid.innerHTML = pd.scenes.map(s => `
-        <div class="scene-card">
-          <div class="scene-icon">${s.icon}</div>
-          <h3>${s.title}</h3>
-          <p>${s.desc}</p>
-        </div>
-      `).join('');
+  // 应用场景图片
+  const sceneImgEl = document.querySelector('.pd-scene-image');
+  if (sceneImgEl) {
+    if (pd.sceneImage) {
+      sceneImgEl.innerHTML = `<img src="${pd.sceneImage}" alt="应用场景" style="max-width:100%;border-radius:8px;" />`;
+    } else {
+      sceneImgEl.innerHTML = '';
     }
   }
 
