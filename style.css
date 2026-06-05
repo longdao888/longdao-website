@@ -549,26 +549,43 @@ img { max-width: 100%; }
   background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: 0;
+  overflow: hidden;
   display: flex; flex-direction: column;
-  align-items: center; gap: 24px;
+  align-items: stretch; gap: 0;
   box-shadow: var(--shadow);
 }
 
 .about-icon-big svg { width: 200px; height: 150px; }
 
 .about-company-img {
-  padding: 0 !important;
+  position: relative;
   overflow: hidden;
   border-radius: var(--radius);
   width: 100%;
+  aspect-ratio: 4/3;
 }
 .about-company-img img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   display: block;
   border-radius: var(--radius);
+}
+.about-company-img .about-card-info {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  display: flex;
+  gap: 8px;
+}
+.about-company-img .about-location {
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  backdrop-filter: blur(4px);
 }
 
 .about-card-info {
