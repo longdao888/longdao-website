@@ -574,8 +574,8 @@ img { max-width: 100%; }
 }
 .about-company-img .about-card-info {
   position: absolute;
-  top: 12px;
-  left: 14px;
+  bottom: 12px;
+  right: 14px;
   display: flex;
   gap: 8px;
 }
@@ -601,11 +601,15 @@ img { max-width: 100%; }
 }
 
 .about-card-side {
-  position: absolute; top: 12px; right: 14px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-radius: var(--radius);
-  padding: 10px 16px; text-align: center;
-  box-shadow: var(--shadow-blue); color: white;
+  position: absolute; top: 0; right: 0;
+  background: rgba(255,255,255,0.12);
+  border-radius: 0 var(--radius) 0 var(--radius);
+  padding: 10px 14px; text-align: center;
+  box-shadow: none;
+  color: white;
+  backdrop-filter: blur(6px);
+  border-left: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .side-stat .s-num { display: block; font-size: 24px; font-weight: 700; line-height: 1; }
@@ -1028,7 +1032,7 @@ img { max-width: 100%; }
   .about-grid, .contact-grid {
     grid-template-columns: 1fr; gap: 40px;
   }
-  .about-card-side { top: 12px; right: 14px; bottom: auto; }
+  .about-card-side { top: 0; right: 0; bottom: auto; border-radius: 0 var(--radius) 0 var(--radius); }
   .products-grid { grid-template-columns: 1fr; }
   .oem-section { padding: 40px 28px; }
   .oem-content { grid-template-columns: 1fr; gap: 32px; }
