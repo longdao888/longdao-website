@@ -574,7 +574,7 @@ img { max-width: 100%; }
 }
 .about-company-img .about-card-info {
   position: absolute;
-  bottom: 12px;
+  top: 12px;
   left: 14px;
   display: flex;
   gap: 8px;
@@ -601,10 +601,10 @@ img { max-width: 100%; }
 }
 
 .about-card-side {
-  position: absolute; top: -16px; right: -16px;
+  position: absolute; top: 12px; right: 14px;
   background: linear-gradient(135deg, var(--primary), var(--accent));
   border-radius: var(--radius);
-  padding: 20px 24px; text-align: center;
+  padding: 10px 16px; text-align: center;
   box-shadow: var(--shadow-blue); color: white;
 }
 
@@ -1028,7 +1028,7 @@ img { max-width: 100%; }
   .about-grid, .contact-grid {
     grid-template-columns: 1fr; gap: 40px;
   }
-  .about-card-side { top: auto; right: 0; bottom: -16px; }
+  .about-card-side { top: 12px; right: 14px; bottom: auto; }
   .products-grid { grid-template-columns: 1fr; }
   .oem-section { padding: 40px 28px; }
   .oem-content { grid-template-columns: 1fr; gap: 32px; }
