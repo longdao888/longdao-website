@@ -377,7 +377,7 @@
       <div class="stat-card blue">
         <div class="sc-label">产品总数</div>
         <div class="sc-num" id="statProducts">4</div>
-        <div class="sc-sub">4个产品系列</div>
+        <div class="sc-sub">4个定制方案</div>
       </div>
       <div class="stat-card">
         <div class="sc-label">轮播图</div>
@@ -451,7 +451,7 @@
       <div class="card-body">
         <p style="font-size:13px;color:var(--text-2);margin-bottom:16px">选择产品分类后，可编辑该产品详情页的文字内容。图片请使用上方「图库管理」上传后再填写路径。</p>
         <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap" id="detailTypeTabs">
-          <button class="btn btn-primary btn-sm" onclick="switchDetailType('aio')" id="tab-aio">🖥 一体机</button>
+          <button class="btn btn-primary btn-sm" onclick="switchDetailType('aio')" id="tab-aio">🖥 硬件定制套装</button>
           <button class="btn btn-outline btn-sm" onclick="switchDetailType('mini')" id="tab-mini">📦 迷你主机</button>
           <button class="btn btn-outline btn-sm" onclick="switchDetailType('display')" id="tab-display">📺 商显</button>
           <button class="btn btn-outline btn-sm" onclick="switchDetailType('desktop')" id="tab-desktop">💻 台式机</button>
@@ -615,12 +615,12 @@
     <div class="form-row">
       <div class="form-group">
         <label>产品名称 *</label>
-        <input type="text" id="pName" placeholder="如：商用一体机系列" />
+        <input type="text" id="pName" placeholder="如：商用硬件定制套装方案" />
       </div>
       <div class="form-group">
         <label>产品分类 *</label>
         <select id="pCategory">
-          <option value="aio">一体机电脑</option>
+          <option value="aio">硬件定制套装</option>
           <option value="mini">MINI主机</option>
           <option value="display">商业显示器</option>
           <option value="desktop">台式电脑</option>
@@ -742,7 +742,7 @@ function getDefaultData() {
   return {
     admin: { ...DEFAULT_ADMIN },
     products: [
-      { id: 'p1', name: '商用一体机系列', category: 'aio', desc: '集成显示器与主机于一体，空间利用率极高。适用于收银、医疗、教育等商业场景，简洁美观，维护方便。', specs: ['屏幕尺寸：19" - 27"', '处理器：Intel / AMD可选', '内存：8GB - 32GB', '支持触控：选配'], detailUrl: 'product-aio.html', status: 'published', image: 'images/logo.webp' },
+      { id: 'p1', name: '商用硬件定制套装方案', category: 'aio', desc: '集成显示器与主机于一体，空间利用率极高。适用于收银、医疗、教育等商业场景，简洁美观，维护方便。', specs: ['屏幕尺寸：19" - 27"', '处理器：Intel / AMD可选', '内存：8GB - 32GB', '支持触控：选配'], detailUrl: 'product-aio.html', status: 'published', image: 'images/logo.webp' },
       { id: 'p2', name: '迷你主机系列', category: 'mini', desc: '超小体积，高性能芯片，低功耗设计。适合家庭影音、办公轻量应用及工业控制等多种场景。', specs: ['体积：极致小巧', '处理器：Intel N95 / N100', '功耗：6W - 15W', '接口：HDMI / USB-C'], detailUrl: 'product-mini.html', status: 'published', image: 'images/logo.webp' },
       { id: 'p3', name: '商显系列', category: 'display', desc: '高亮度、宽视角、7×24小时稳定运行。广泛应用于广告宣传、数字标牌、会议室、零售展示等商业场景。', specs: ['尺寸：32" - 98"', '亮度：500 - 2000 nits', '分辨率：FHD / 4K UHD', '运行时间：7×24小时'], detailUrl: 'product-display.html', status: 'published', image: 'images/logo.webp' },
       { id: 'p4', name: '台式电脑系列', category: 'desktop', desc: '高性能配置，支持高度个性化定制。满足图形设计、视频渲染、工程计算等高负载专业应用需求。', specs: ['处理器：Intel Core / AMD Ryzen', '内存：16GB - 128GB', '显卡：集显 / 独显可选', '存储：SSD + HDD'], detailUrl: 'product-desktop.html', status: 'published', image: 'images/logo.webp' }
@@ -754,11 +754,11 @@ function getDefaultData() {
       hero: {
         badge: '专业 · 创新 · 定制',
         title: '智能硬件<span class="highlight">制造专家</span><br>引领科技新未来',
-        desc: '专注一体机电脑、MINI主机、商业显示器及台式电脑研发制造<br>提供专业 OEM / ODM 定制服务，满足您的个性化需求',
+        desc: '专注硬件定制套装、MINI主机、商业显示器及台式电脑研发制造<br>提供专业 OEM / ODM 定制服务，满足您的个性化需求',
         stats: [
           { num: '10+', label: '年研发经验' },
           { num: '500+', label: '企业客户' },
-          { num: '50+', label: '产品系列' },
+          { num: '50+', label: '定制方案' },
           { num: '20+', label: '出口国家' }
         ]
       },
@@ -772,7 +772,7 @@ function getDefaultData() {
         title: '关于我们',
         tag: 'ABOUT US',
         subtitle: '深耕硬件制造领域，以技术创新驱动企业发展',
-        text1: '广州龙到网络科技有限公司成立于广州，是一家专注于智能硬件研发、生产与销售的高新技术企业。公司主要经营一体机电脑、MINI主机、商业显示器（商显）及台式电脑等产品，并提供专业的OEM/ODM定制服务。',
+        text1: '龙到® 智造成立于广州，是一家专注于智能硬件研发、生产与销售的高新技术企业。公司主要经营硬件定制套装、MINI主机、商业显示器（商显）及台式电脑等产品，并提供专业的OEM/ODM定制服务。',
         text2: '经过多年发展，公司已形成完整的产品研发体系和成熟的制造工艺，产品覆盖教育、医疗、零售、金融等多个行业领域，深受国内外客户信赖。',
         features: ['自主研发核心技术，持续创新迭代', '通过CE、FCC、RoHS等国际权威认证', '完善售后服务体系，响应及时高效', '产品远销欧美、东南亚等20余个国家和地区'],
         certs: ['CE认证', 'FCC认证', 'RoHS认证', 'ISO9001'],
@@ -795,7 +795,7 @@ function getDefaultData() {
     },
     productDetails: {
       aio: {
-        tag: '一体机电脑', series: 'AIO Series', title: '商用一体机系列',
+        tag: '硬件定制套装', series: 'AIO Series', title: '商用硬件定制套装方案',
         summary: '集成显示器与主机于一体，空间利用率极高。专为收银、医疗、教育、零售等商业场景设计，简洁美观，维护方便，支持全系列OEM/ODM定制服务。',
         highlights: [
           { icon: '🖥', title: '19" - 27"', subtitle: '多尺寸选择' },
@@ -928,14 +928,14 @@ function getDefaultData() {
       }
     },
     company: {
-      name: '广州龙到网络科技有限公司',
+      name: '龙到® 智造',
       nameEn: 'GUANGZHOU LONGDAO NETWORK TECHNOLOGY CO., LTD.',
       phone: '400-XXX-XXXX',
       email: 'info@longdao.com',
       address: '广东省广州市',
       icp: '粤ICP备XXXXXXXX号',
       hours: '周一至周六 09:00 - 18:00',
-      aboutP1: '广州龙到网络科技有限公司成立于广州，是一家专注于智能硬件研发、生产与销售的高新技术企业。公司主要经营一体机电脑、MINI主机、商业显示器（商显）及台式电脑等产品，并提供专业的OEM/ODM定制服务。',
+      aboutP1: '龙到® 智造成立于广州，是一家专注于智能硬件研发、生产与销售的高新技术企业。公司主要经营硬件定制套装、MINI主机、商业显示器（商显）及台式电脑等产品，并提供专业的OEM/ODM定制服务。',
       aboutP2: '经过多年发展，公司已形成完整的产品研发体系和成熟的制造工艺，产品覆盖教育、医疗、零售、金融等多个行业领域，深受国内外客户信赖。'
     },
     contact: {
@@ -1066,7 +1066,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 
 /* ===== 产品详情编辑器 ===== */
 const DETAIL_TYPES = ['aio', 'mini', 'display', 'desktop'];
-const DETAIL_LABELS = { aio: '一体机电脑', mini: '迷你主机', display: '商业显示器', desktop: '台式电脑' };
+const DETAIL_LABELS = { aio: '硬件定制套装', mini: '迷你主机', display: '商业显示器', desktop: '台式电脑' };
 
 function initDetailEditor() {
   DETAIL_TYPES.forEach(type => {
@@ -1106,7 +1106,7 @@ function buildDetailForm(type, d) {
       <div class="detail-section-title">基本信息</div>
       <div class="form-row">
         <div class="form-group">
-          <label>标签（如：一体机电脑）</label>
+          <label>标签（如：硬件定制套装）</label>
           <input class="spec-table-input" id="dh_${type}_tag" value="${escAttr(d.tag||'')}" />
         </div>
         <div class="form-group">
@@ -1291,7 +1291,7 @@ function renderDashboard() {
 }
 
 /* ===== 产品管理 ===== */
-const catLabels = { aio:'一体机电脑', mini:'MINI主机', display:'商业显示器', desktop:'台式电脑', other:'其他' };
+const catLabels = { aio:'硬件定制套装', mini:'MINI主机', display:'商业显示器', desktop:'台式电脑', other:'其他' };
 
 function renderProducts() {
   const tbody = document.getElementById('productTbody');
