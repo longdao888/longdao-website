@@ -28,7 +28,6 @@
         </div>
       </div>
     </div>
-    <!-- 导航菜单：桌面端在 header 内横向排列，移动端通过 JS 添加到 body 末尾以获得独立 z-index -->
     <nav class="nav-menu" id="navMenu">
       <a href="javascript:void(0)" class="nav-link active" data-section="home">首页</a>
       <a href="javascript:void(0)" class="nav-link" data-section="products">定制方案中心</a>
@@ -36,7 +35,6 @@
       <a href="javascript:void(0)" class="nav-link" data-section="oem">定制服务</a>
       <a href="javascript:void(0)" class="nav-link" data-section="contact">联系我们</a>
     </nav>
-    <!-- 汉堡按钮 -->
     <button class="nav-toggle" id="navToggle" onclick="toggleMenu()" aria-label="打开菜单">
       <span></span><span></span><span></span>
     </button>
@@ -50,19 +48,19 @@
 <section id="home" class="hero">
   <div class="hero-carousel" id="heroCarousel">
     <div class="carousel-item active">
-      <img class="carousel-img" 
-           src="images/hero-banner-1.webp" 
-           srcset="images/hero-banner-1-mobile.webp 768w, images/hero-banner-1.webp 1920w" 
+      <img class="carousel-img"
+           src="images/hero-banner-1.webp"
+           srcset="images/hero-banner-1-mobile.webp 768w, images/hero-banner-1.webp 1920w"
            sizes="100vw"
-           alt="龙到23.8-49英寸大屏一体化智显终端" 
-           width="1920" 
-           height="749" 
+           alt="龙到23.8-49英寸大屏一体化智显终端"
+           width="1920"
+           height="749"
            fetchpriority="high"
            decoding="async">
     </div>
   </div>
-  <button class="carousel-arrow prev" onclick="prevSlide()">‹</button>
-  <button class="carousel-arrow next" onclick="nextSlide()">›</button>
+  <button class="carousel-arrow prev" onclick="prevSlide()">&#8249;</button>
+  <button class="carousel-arrow next" onclick="nextSlide()">&#8250;</button>
   <div class="carousel-indicators" id="carouselIndicators">
     <button class="carousel-dot active" onclick="goToSlide(0)"></button>
   </div>
@@ -73,12 +71,12 @@
   <div class="container">
     <div class="hero-badge">龙到® · 智能视算 · 专属定制</div>
     <h1 class="hero-title">
+      龙到启元 智汇新势<br />
       专注23.8-49英寸大屏<span class="highlight">智能视算定制</span>
-      <br />按需定制组装·政企批量定作一站式服务
     </h1>
     <p class="hero-desc">
-      屏幕、处理器、显卡自由选配<br />
-      工厂一站式配套服务，政企批量定制、工作室专属搭配
+      龙到精工 专属定制<br />
+      京东方原厂IPS面板 · 六大模块全维度定制 · 大湾区自有工贸产线
     </p>
     <div class="hero-actions">
       <button class="btn btn-primary" data-section="products">查看定制方案</button>
@@ -120,29 +118,29 @@
         <div class="adv-icon">
           <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/><path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>品质保证</h3>
-        <p>严格质量管控体系，通过ISO国际认证，每款产品出厂前经过严格测试</p>
+        <h3>四重品控</h3>
+        <p>屏幕坏点全检、烤机稳定性测试、全接口通测、散热满载压测，出厂即精品</p>
       </div>
       <div class="adv-item">
         <div class="adv-icon">
           <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="3" stroke="currentColor" stroke-width="2"/><path d="M17 28l4-8 4 6 3-4 4 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3>定制研发</h3>
-        <p>支持外观设计、硬件配置、软件系统全面定制，满足品牌商个性化需求</p>
+        <h3>六大模块定制</h3>
+        <p>屏幕尺寸、核心算力、外观结构、接口布局、散热模组、外壳工艺全维度可定制</p>
       </div>
       <div class="adv-item">
         <div class="adv-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M24 8v32M8 24h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <h3>快速交付</h3>
-        <p>完善的供应链管理，快速响应客户需求，确保准时交货，降低客户等待成本</p>
+        <h3>高效交付</h3>
+        <p>标准方案3日内出库，专项定制7-15天交付，单日稳定批量出货数百台</p>
       </div>
       <div class="adv-item">
         <div class="adv-icon">
           <svg viewBox="0 0 48 48" fill="none"><path d="M12 36V20l12-8 12 8v16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="20" y="28" width="8" height="8" stroke="currentColor" stroke-width="2"/></svg>
         </div>
-        <h3>专业服务</h3>
-        <p>资深工程师团队提供全程技术支持，售前咨询到售后维护一站式解决方案</p>
+        <h3>1台起订</h3>
+        <p>1台起个性化定制，30台以上工程批量享专属议价，大小批量均可承接</p>
       </div>
     </div>
   </div>
@@ -154,7 +152,7 @@
     <div class="section-header">
       <span class="section-tag">FACTORY</span>
       <h2 class="section-title">工厂实力</h2>
-      <p class="section-desc">深耕硬件制造领域，以技术创新驱动企业发展</p>
+      <p class="section-desc">大湾区工贸一体化定制厂商，专注商用智能视算终端研发与交付</p>
     </div>
     <div class="about-grid">
       <div class="about-visual">
@@ -179,7 +177,7 @@
           </div>
           <div class="feat-item">
             <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span>完善售后服务体系，响应及时高效</span>
+            <span>设备硬件质保+远程技术调试支持</span>
           </div>
           <div class="feat-item">
             <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -230,12 +228,12 @@
         <div class="product-info">
           <span class="product-tag">一体化智显终端</span>
           <h3>23.8-49英寸一体化智显终端方案</h3>
-          <p>23.8-49英寸大屏搭配处理器、显卡自由选配，适用于收银、医疗、教育等商业场景，按需定制组装，简洁美观，维护方便。</p>
+          <p>京东方BOE原厂IPS面板，显示与算力一体化集成，适用于收银、医疗、教育等商业场景，按需定制组装。</p>
           <ul class="product-specs">
             <li>屏幕尺寸：23.8" - 49"</li>
-            <li>处理器：Intel / AMD可选</li>
-            <li>内存：8GB - 32GB</li>
-            <li>支持触控：选配</li>
+            <li>面板：京东方IPS</li>
+            <li>分辨率：1080P / 2K / 4K</li>
+            <li>触控：选配</li>
           </ul>
           <div class="product-card-actions">
             <a href="product-aio.html" class="btn-product-detail">查看详情</a>
@@ -259,12 +257,12 @@
         <div class="product-info">
           <span class="product-tag">桌面集成算力屏</span>
           <h3>桌面集成算力屏系列</h3>
-          <p>超小体积，高性能芯片，低功耗设计。适合家庭影音、办公轻量应用及工业控制等多种场景。</p>
+          <p>超小体积，低功耗设计，算力模块化选配。适合多开运营、办公轻量应用及工业控制等多种场景。</p>
           <ul class="product-specs">
             <li>体积：极致小巧</li>
-            <li>处理器：Intel N95 / N100</li>
             <li>功耗：6W - 15W</li>
             <li>接口：HDMI / USB-C</li>
+            <li>散热：风扇/无风扇可选</li>
           </ul>
           <div class="product-card-actions">
             <a href="product-mini.html" class="btn-product-detail">查看详情</a>
@@ -290,12 +288,12 @@
         <div class="product-info">
           <span class="product-tag">商用视算终端</span>
           <h3>商用视算终端系列</h3>
-          <p>高亮度、宽视角、7×24小时稳定运行。广泛应用于广告宣传、数字标牌、会议室、零售展示等商业场景。</p>
+          <p>高亮度、宽视角、7x24小时稳定运行。广泛应用于门店广告视显、直播间商用大屏、数字标牌等场景。</p>
           <ul class="product-specs">
             <li>尺寸：23.8" - 49"</li>
             <li>亮度：500 - 2000 nits</li>
             <li>分辨率：FHD / 4K UHD</li>
-            <li>运行时间：7×24小时</li>
+            <li>运行：7x24小时</li>
           </ul>
           <div class="product-card-actions">
             <a href="product-display.html" class="btn-product-detail">查看详情</a>
@@ -320,16 +318,130 @@
         <div class="product-info">
           <span class="product-tag">桌面智能显示设备</span>
           <h3>桌面智能显示设备系列</h3>
-          <p>高性能配置，支持高度个性化定制。满足图形设计、视频渲染、工程计算等高负载专业应用需求。</p>
+          <p>高性能算力配置，顶配可搭载5090图形模组。满足渲染剪辑、多开运营、工程计算等高负载专业应用。</p>
           <ul class="product-specs">
-            <li>处理器：Intel Core / AMD Ryzen</li>
+            <li>算力：模块化选配</li>
             <li>内存：16GB - 128GB</li>
-            <li>显卡：集显 / 独显可选</li>
+            <li>图形模组：5090顶配可选</li>
             <li>存储：SSD + HDD</li>
           </ul>
           <div class="product-card-actions">
             <a href="product-desktop.html" class="btn-product-detail">查看详情</a>
             <button class="btn-product" data-section="contact">咨询报价</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 六大定制模块 -->
+    <div class="custom-modules" style="padding-top:0;background:transparent;">
+      <div class="section-header">
+        <span class="section-tag">SIX MODULES</span>
+        <h2 class="section-title">六大全维度定制模块</h2>
+        <p class="section-desc">从屏幕到外壳，全维度个性化定制，1台起订</p>
+      </div>
+      <div class="modules-grid">
+        <div class="module-card">
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          </div>
+          <div class="module-num">01</div>
+          <h3>屏幕尺寸与刷新率</h3>
+          <p>23.8-49英寸全尺寸覆盖，1080P/2K/4K分辨率，高刷新率、高色域自由选配</p>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+          </div>
+          <div class="module-num">02</div>
+          <h3>核心算力配置</h3>
+          <p>兼容多代桌面级/移动端处理器，支持高端独立图形模组定制，顶配可搭载5090</p>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="module-num">03</div>
+          <h3>机身外观结构</h3>
+          <p>机身颜色、LOGO铭牌、尺寸比例均可按需调整，支持品牌专属外观定制</p>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>
+          </div>
+          <div class="module-num">04</div>
+          <h3>接口布局定制</h3>
+          <p>HDMI、DP、USB-C、RJ45等接口类型与数量按项目需求灵活配置</p>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>
+          </div>
+          <div class="module-num">05</div>
+          <h3>散热模组方案</h3>
+          <p>自研结构散热模组，风扇/无风扇方案可选，满载压力测试保障长效稳定</p>
+        </div>
+        <div class="module-card">
+          <div class="module-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 .5-4.5 4 1.5 6L12 16l-6 3 1.5-6L3 8.5 9 8z"/></svg>
+          </div>
+          <div class="module-num">06</div>
+          <h3>外壳材质工艺</h3>
+          <p>铝合金、工程塑料等多种材质可选，阳极氧化、磨砂等表面工艺定制</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 参数可视化 -->
+    <div class="spec-visual" style="background:transparent;padding-top:0;padding-bottom:0;">
+      <div class="section-header">
+        <span class="section-tag">SPECIFICATIONS</span>
+        <h2 class="section-title">核心参数一览</h2>
+        <p class="section-desc">全系京东方BOE原厂IPS面板，专业色彩校准</p>
+      </div>
+      <div class="spec-visual-grid">
+        <div class="spec-visual-card">
+          <div class="svc-header">
+            <div class="svc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+            </div>
+            <span class="svc-title">显示规格</span>
+          </div>
+          <div class="svc-bar-group">
+            <div class="svc-bar-item">
+              <div class="svc-bar-label"><span>1080P FHD</span><span>标准</span></div>
+              <div class="svc-bar-track"><div class="svc-bar-fill" style="width:60%"></div></div>
+            </div>
+            <div class="svc-bar-item">
+              <div class="svc-bar-label"><span>2K QHD</span><span>专业</span></div>
+              <div class="svc-bar-track"><div class="svc-bar-fill" style="width:80%"></div></div>
+            </div>
+            <div class="svc-bar-item">
+              <div class="svc-bar-label"><span>4K UHD</span><span>旗舰</span></div>
+              <div class="svc-bar-track"><div class="svc-bar-fill" style="width:100%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="spec-visual-card">
+          <div class="svc-header">
+            <div class="svc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+            </div>
+            <span class="svc-title">算力配置</span>
+          </div>
+          <div class="svc-bar-group">
+            <div class="svc-bar-item">
+              <div class="svc-bar-label"><span>基础算力</span><span>日常办公</span></div>
+              <div class="svc-bar-track"><div class="svc-bar-fill" style="width:40%"></div></div>
+            </div>
+            <div class="svc-bar-item">
+              <div class="svc-bar-label"><span>高性能算力</span><span>渲染剪辑</span></div>
+              <div class="svc-bar-track"><div class="svc-bar-fill" style="width:75%"></div></div>
+            </div>
+            <div class="svc-bar-item">
+              <div class="svc-bar-label"><span>5090图形模组</span><span>顶配</span></div>
+              <div class="svc-bar-track"><div class="svc-bar-fill" style="width:100%"></div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -341,35 +453,98 @@
         <div class="oem-text">
           <span class="section-tag">CUSTOM</span>
           <h3>定制服务</h3>
-          <p>我们提供从设计、开发到组装的全流程智显定制服务，帮助您快速将智能视算方案理念变为现实。无论是外观设计定制、硬件配置调整，还是软件系统集成，我们的专业团队都能为您提供最优解决方案。</p>
+          <p>从设计、开发到组装的全流程智显定制服务，帮助您快速将智能视算方案理念变为现实。无论是外观设计定制、硬件配置调整，还是软件系统集成，专业团队提供最优解决方案。</p>
           <div class="oem-steps">
             <div class="step"><span class="step-num">01</span><span>需求沟通</span></div>
-            <div class="step-arrow">→</div>
+            <div class="step-arrow">&#8594;</div>
             <div class="step"><span class="step-num">02</span><span>方案设计</span></div>
-            <div class="step-arrow">→</div>
+            <div class="step-arrow">&#8594;</div>
             <div class="step"><span class="step-num">03</span><span>样品确认</span></div>
-            <div class="step-arrow">→</div>
-            <div class="step"><span class="step-num">04</span><span>批量生产</span></div>
+            <div class="step-arrow">&#8594;</div>
+            <div class="step"><span class="step-num">04</span><span>批量交付</span></div>
           </div>
         </div>
         <div class="oem-badges">
           <div class="oem-badge">
-            <div class="ob-icon">🎨</div>
+            <div class="ob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
             <span>外观定制</span>
           </div>
           <div class="oem-badge">
-            <div class="ob-icon">⚙️</div>
+            <div class="ob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg></div>
             <span>智显定制</span>
           </div>
           <div class="oem-badge">
-            <div class="ob-icon">💻</div>
+            <div class="ob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
             <span>软件集成</span>
           </div>
           <div class="oem-badge">
-            <div class="ob-icon">📦</div>
+            <div class="ob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
             <span>包装定制</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 品控与交付 -->
+<section class="quality-delivery">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">QUALITY & DELIVERY</span>
+      <h2 class="section-title">产能与品控</h2>
+      <p class="section-desc">自有标准化组装产线，四重出厂严苛品控，全系全新原厂硬件</p>
+    </div>
+    <div class="qd-grid">
+      <div class="qd-card">
+        <div class="qd-num">数百台</div>
+        <div class="qd-label">单日产能</div>
+        <div class="qd-sub">稳定批量出货</div>
+      </div>
+      <div class="qd-card">
+        <div class="qd-num">3天</div>
+        <div class="qd-label">标准方案出库</div>
+        <div class="qd-sub">极速出库交付</div>
+      </div>
+      <div class="qd-card">
+        <div class="qd-num">7-15天</div>
+        <div class="qd-label">专项定制交付</div>
+        <div class="qd-sub">按需定制组装</div>
+      </div>
+      <div class="qd-card">
+        <div class="qd-num">1台起</div>
+        <div class="qd-label">个性化定制</div>
+        <div class="qd-sub">30台以上享批量议价</div>
+      </div>
+    </div>
+    <div class="qc-flow">
+      <div class="qc-step">
+        <div class="qc-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+        </div>
+        <h4>屏幕坏点全检</h4>
+        <p>屏幕坏点亮点逐台全检，确保显示无瑕疵</p>
+      </div>
+      <div class="qc-step">
+        <div class="qc-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h4>烤机稳定性测试</h4>
+        <p>长时间烤机运行，验证系统稳定性</p>
+      </div>
+      <div class="qc-step">
+        <div class="qc-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h4>全接口功能通测</h4>
+        <p>全接口功能逐一通测，保障连接可靠</p>
+      </div>
+      <div class="qc-step">
+        <div class="qc-step-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4 4 0 105 0z"/></svg>
+        </div>
+        <h4>散热满载压测</h4>
+        <p>散热满载压力测试，长效商用稳定运行</p>
       </div>
     </div>
   </div>
@@ -381,12 +556,12 @@
     <div class="section-header">
       <span class="section-tag">CONTACT US</span>
       <h2 class="section-title">联系我们</h2>
-      <p class="section-desc">期待与您合作，共创美好商业未来</p>
+      <p class="section-desc">期待与您合作，共创智能视算新未来</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
         <h3>与我们取得联系</h3>
-        <p>无论您有产品咨询、合作洽谈还是售后服务需求，我们的专业团队随时为您提供帮助。</p>
+        <p>无论您有产品咨询、合作洽谈还是售后服务需求，专业团队随时为您提供帮助。</p>
         <div class="info-items">
           <div class="info-item">
             <div class="info-icon">
@@ -477,9 +652,9 @@
 
 
 <!-- 全站合规提示（永久保留，不得删除） -->
-<div class="compliance-notice" style="background:var(--bg-2);padding:20px 0;text-align:center;border-top:1px solid var(--border);">
+<div class="compliance-notice">
   <div class="container">
-    <p style="font-size:12px;color:var(--text-3);line-height:1.8;margin:0;">
+    <p>
       本网站所有展示内容仅为智能视算终端定制方案参考，所有设备均为客户下单后现场个性化组装，不属于标准化量产终端；全部独立硬件零部件具备正规原厂资质。
     </p>
   </div>
@@ -518,26 +693,26 @@
       </div>
       <div class="footer-contact">
         <h4>联系方式</h4>
-        <p>📍 广东省广州市</p>
-        <p>📞 400-XXX-XXXX</p>
-        <p>✉️ info@longdao.com</p>
-        <p>🕐 周一至周六 09:00-18:00</p>
+        <p>广东省广州市</p>
+        <p>400-XXX-XXXX</p>
+        <p>info@longdao.com</p>
+        <p>周一至周六 09:00-18:00</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 广州龙到网络科技有限公司 版权所有</p>
+      <p>(c) 2024 广州龙到网络科技有限公司 版权所有</p>
       <p>粤ICP备XXXXXXXX号</p>
     </div>
   </div>
 </footer>
 
 <!-- 返回顶部 -->
-<button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()">&#8593;</button>
 
 <!-- 提交成功弹窗 -->
 <div class="modal-overlay" id="successModal">
   <div class="modal">
-    <div class="modal-icon">✓</div>
+    <div class="modal-icon">&#10003;</div>
     <h3>提交成功！</h3>
     <p>感谢您的留言，我们将在24小时内与您联系。</p>
     <button class="btn btn-primary" onclick="closeModal()">确定</button>
