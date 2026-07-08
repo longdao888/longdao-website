@@ -635,11 +635,11 @@
     <div class="form-row">
       <div class="form-group">
         <label>规格亮点1</label>
-        <input type="text" id="pSpec1" placeholder="如：屏幕尺寸：19&quot; - 27&quot;" />
+        <input type="text" id="pSpec1" placeholder="如：屏幕尺寸：23.8&quot; - 49&quot;" />
       </div>
       <div class="form-group">
         <label>规格亮点2</label>
-        <input type="text" id="pSpec2" placeholder="如：处理器：Intel / AMD可选" />
+        <input type="text" id="pSpec2" placeholder="如：核心算力：基础/中端/高性能可选" />
       </div>
     </div>
     <div class="form-row">
@@ -742,10 +742,10 @@ function getDefaultData() {
   return {
     admin: { ...DEFAULT_ADMIN },
     products: [
-      { id: 'p1', name: '一体化智显终端方案', category: 'aio', desc: '显示与算力一体化集成，空间利用率极高。适用于收银、医疗、教育等商业场景，简洁美观，维护方便。', specs: ['屏幕尺寸：23.8" - 49"', '处理器：Intel / AMD可选', '内存：8GB - 32GB', '支持触控：选配'], detailUrl: 'product-aio.html', status: 'published', image: 'images/logo.webp' },
-      { id: 'p2', name: '桌面集成算力屏系列', category: 'mini', desc: '超小体积，高性能芯片，低功耗设计。适合家庭影音、办公轻量应用及工业控制等多种场景。', specs: ['体积：极致小巧', '处理器：Intel N95 / N100', '功耗：6W - 15W', '接口：HDMI / USB-C'], detailUrl: 'product-mini.html', status: 'published', image: 'images/logo.webp' },
-      { id: 'p3', name: '商用视算终端系列', category: 'display', desc: '高亮度、宽视角、7×24小时稳定运行。广泛应用于广告宣传、数字标牌、会议室、零售展示等商业场景。', specs: ['尺寸：23.8" - 49"', '亮度：500 - 2000 nits', '分辨率：FHD / 4K UHD', '运行时间：7×24小时'], detailUrl: 'product-display.html', status: 'published', image: 'images/logo.webp' },
-      { id: 'p4', name: '桌面智能显示设备系列', category: 'desktop', desc: '高性能配置，支持高度个性化定制。满足图形设计、视频渲染、工程计算等高负载专业应用需求。', specs: ['处理器：Intel Core / AMD Ryzen', '内存：16GB - 128GB', '显卡：集显 / 独显可选', '存储：SSD + HDD'], detailUrl: 'product-desktop.html', status: 'published', image: 'images/logo.webp' }
+      { id: 'p1', name: '23.8-49英寸一体化智显终端方案', category: 'aio', desc: '京东方BOE原厂IPS面板，显示与算力一体化集成，适用于收银、医疗、教育等商业场景，按需定制组装。', specs: ['屏幕尺寸：23.8" - 49"', '面板：京东方IPS', '分辨率：1080P / 2K / 4K', '触控：选配'], detailUrl: 'product-aio.html', status: 'published', image: 'images/logo.webp' },
+      { id: 'p2', name: '桌面集成算力屏系列', category: 'mini', desc: '超小体积，低功耗设计，算力模块化选配。适合多开运营、办公轻量应用及工业控制等多种场景。', specs: ['体积：极致小巧', '功耗：6W - 15W', '接口：HDMI / USB-C', '散热：风扇/无风扇可选'], detailUrl: 'product-mini.html', status: 'published', image: 'images/logo.webp' },
+      { id: 'p3', name: '商用视算终端系列', category: 'display', desc: '高亮度、宽视角、7×24小时稳定运行。广泛应用于门店广告视显、直播间商用大屏、数字标牌等场景。', specs: ['尺寸：23.8" - 49"', '亮度：500 - 2000 nits', '分辨率：FHD / 4K UHD', '运行：7×24小时'], detailUrl: 'product-display.html', status: 'published', image: 'images/logo.webp' },
+      { id: 'p4', name: '桌面智能显示设备系列', category: 'desktop', desc: '高性能算力配置，顶配可搭载5090图形模组。满足渲染剪辑、多开运营、工程计算等高负载专业应用。', specs: ['算力：模块化选配', '内存：16GB - 128GB', '图形模组：5090顶配可选', '存储：SSD + HDD'], detailUrl: 'product-desktop.html', status: 'published', image: 'images/logo.webp' }
     ],
     banners: [
       { id: 'b1', src: 'images/hero-banner-1.webp', alt: '广州龙到网络科技 - 智能硬件制造专家', link: '' }
@@ -786,98 +786,100 @@ function getDefaultData() {
         desc: '我们提供从设计、开发到生产的全流程定制研发服务，帮助您快速将产品理念变为现实。无论是外观设计定制、硬件配置调整，还是软件系统集成，我们的专业团队都能为您提供最优解决方案。',
         steps: ['需求沟通', '方案设计', '样品确认', '批量生产'],
         badges: [
-          { icon: '🎨', title: '外观定制' },
-          { icon: '⚙️', title: '智显定制' },
-          { icon: '💻', title: '软件集成' },
-          { icon: '📦', title: '包装定制' }
+          { icon: 'design', title: '外观定制' },
+          { icon: 'display', title: '智显定制' },
+          { icon: 'software', title: '软件集成' },
+          { icon: 'package', title: '包装定制' }
         ]
       }
     },
     productDetails: {
       aio: {
-        tag: '一体化智显终端', series: 'AIO Series', title: '一体化智显终端方案',
-        summary: '显示与算力一体化集成，空间利用率极高。专为收银、医疗、教育、零售等商业场景设计，简洁美观，维护方便，支持全系列定制研发服务。',
+        tag: '一体化智显终端', series: 'AIO Series', title: '23.8-49英寸一体化智显终端方案',
+        summary: '京东方BOE原厂IPS面板，显示与算力一体化集成，专为收银、医疗、教育、零售等商业场景设计，按需定制组装，支持全面智显定制服务。',
         highlights: [
-          { icon: '🖥', title: '23.8" - 49"', subtitle: '多尺寸选择' },
-          { icon: '👆', title: '触控可选', subtitle: '电容多点触控' },
-          { icon: '⚡', title: 'Intel/AMD', subtitle: '双平台可选' },
-          { icon: '🔧', title: '定制研发', subtitle: '全面定制服务' }
+          { icon: 'display', title: '23.8" - 49"', subtitle: '多尺寸选择' },
+          { icon: 'touch', title: '触控可选', subtitle: '电容多点触控' },
+          { icon: 'cpu', title: '算力可选', subtitle: '多平台兼容' },
+          { icon: 'custom', title: '定制研发', subtitle: '全面定制服务' }
         ],
         specs: {
           headers: ['参数项目', '基础款', '标准款', '专业款'],
           rows: [
             ['屏幕尺寸', '23.8"', '27" / 34"', '49"'],
+            ['面板类型', '京东方BOE原厂IPS面板', '京东方BOE原厂IPS面板', '京东方BOE原厂IPS面板'],
             ['分辨率', '1080P FHD', '2K QHD', '4K UHD'],
-            ['处理器', 'Intel Celeron J4125', 'Intel Core i3 / i5', 'Intel Core i7 / AMD Ryzen 7'],
-            ['内存', '4GB / 8GB DDR4', '8GB / 16GB DDR4', '16GB / 32GB DDR4'],
+            ['核心算力', '基础处理器', '中端处理器', '高性能处理器'],
+            ['内存', '8GB DDR4', '16GB DDR4', '32GB DDR4'],
             ['存储', '128GB SSD', '256GB / 512GB SSD', '512GB / 1TB SSD'],
-            ['操作系统', 'Windows 10 / Linux', 'Windows 10 / 11', 'Windows 11 Pro'],
+            ['系统生态', '深度适配Windows商用生态', '深度适配Windows商用生态', '深度适配Windows商用生态'],
             ['触控', '不支持', '可选（10点电容）', '标配（10点电容）'],
             ['接口', 'USB×4, HDMI×1', 'USB×6, HDMI×2, RJ45', 'USB×8, HDMI×2, DP, RJ45'],
-            ['摄像头', '不含', '可选（1080P）', '标配（1080P+麦克风）'],
-            ['功耗', '约 35W', '约 55W', '约 85W'],
+            ['屏幕素质', 'IPS广视角、DC无频闪、低蓝光、专业色彩校准', 'IPS广视角、DC无频闪、低蓝光、专业色彩校准', 'IPS广视角、DC无频闪、低蓝光、专业色彩校准'],
             ['认证', 'CE / FCC', 'CE / FCC / RoHS', 'CE / FCC / RoHS / ISO9001']
           ]
         },
         scenes: [
-          { icon: '🏪', title: '零售收银', desc: '点位精确触控，收银系统稳定运行，支持多外设扩展，打印机、扫码枪一体接入。' },
-          { icon: '🏥', title: '医疗行业', desc: '医疗级防水设计可选，符合医疗环境标准，适用于护士站、门诊叫号、检查报告展示。' },
-          { icon: '🏫', title: '教育培训', desc: '大屏触控交互，支持电子教学，批量定制系统镜像，降低IT运维成本。' },
-          { icon: '🏦', title: '金融自助', desc: '稳定可靠的硬件平台，支持人脸识别模块集成，适用于自助业务终端场景。' },
-          { icon: '🏨', title: '酒店前台', desc: '简洁美观的一体化设计，节省台面空间，与PMS系统无缝对接。' },
-          { icon: '🏭', title: '工业控制', desc: '可选工业级配置，支持宽温运行，适应复杂工厂环境，稳定运行无忧。' }
+          { icon: 'store', title: '零售收银', desc: '点位精确触控，收银系统稳定运行，支持多外设扩展，打印机、扫码枪一体接入。' },
+          { icon: 'medical', title: '医疗行业', desc: '医疗级防水设计可选，符合医疗环境标准，适用于护士站、门诊叫号、检查报告展示。' },
+          { icon: 'edu', title: '教育培训', desc: '大屏触控交互，支持电子教学，批量定制系统镜像，降低IT运维成本。' },
+          { icon: 'finance', title: '金融自助', desc: '稳定可靠的硬件平台，支持人脸识别模块集成，适用于自助业务终端场景。' },
+          { icon: 'hotel', title: '酒店前台', desc: '简洁美观的一体化设计，节省台面空间，与管理系统无缝对接。' },
+          { icon: 'industry', title: '工业控制', desc: '可选工业级配置，支持宽温运行，适应复杂工厂环境，稳定运行无忧。' }
         ],
-        oem: { items: ['外观定制：机身颜色、LOGO、尺寸比例均可按需调整', '配置定制：处理器、内存、存储、接口按项目需求配置', '系统集成：预装指定操作系统和应用软件', '包装定制：品牌包装、配件搭配、说明书定制', '起订量：小批量起订，具体MOQ请咨询业务'] },
+        oem: { items: ['外观定制：机身颜色、LOGO、尺寸比例均可按需调整', '配置定制：核心算力、内存、存储、接口按项目需求配置', '系统集成：预装指定操作系统和应用软件', '包装定制：品牌包装、配件搭配、说明书定制', '起订量：1台起个性化定制，30台以上享专属议价'] },
         related: ['mini', 'display', 'desktop']
       },
       mini: {
         tag: '桌面集成算力屏', series: 'Computing Screen Series', title: '桌面集成算力屏系列',
-        summary: '超小体积，高性能芯片，低功耗设计。专为家庭影音、办公轻量应用及工业控制等多种场景设计，支持定制研发。',
+        summary: '超小体积，低功耗设计，算力模块化选配。专为多开运营、办公轻量应用及工业控制等多种场景设计，支持定制研发。',
         highlights: [
-          { icon: '📦', title: '极致小巧', subtitle: '体积仅0.5L' },
-          { icon: '⚡', title: '低功耗', subtitle: '6W - 15W' },
-          { icon: '🔌', title: '丰富接口', subtitle: 'HDMI / USB-C' },
-          { icon: '🔧', title: '定制研发', subtitle: '全面定制服务' }
+          { icon: 'size', title: '极致小巧', subtitle: '体积仅0.5L' },
+          { icon: 'power', title: '低功耗', subtitle: '6W - 15W' },
+          { icon: 'port', title: '丰富接口', subtitle: 'HDMI / USB-C' },
+          { icon: 'custom', title: '定制研发', subtitle: '全面定制服务' }
         ],
         specs: {
           headers: ['参数项目', '入门款', '标准款', '高性能款'],
           rows: [
-            ['处理器', 'Intel N95', 'Intel N100', 'Intel Core i5'],
+            ['核心算力', '基础处理器', '中端处理器', '高性能处理器'],
             ['内存', '4GB DDR4', '8GB DDR4', '16GB DDR4'],
             ['存储', '128GB SSD', '256GB SSD', '512GB SSD'],
-            ['显卡', '集成显卡', '集成显卡', 'Intel Iris Xe'],
+            ['图形模组', '集成图形', '集成图形', '高性能集成图形'],
             ['接口', 'HDMI, USB×4', 'HDMI, DP, USB×6', 'HDMI×2, DP, USB×8'],
             ['网络', 'WiFi 5, 千兆网口', 'WiFi 6, 2.5G网口', 'WiFi 6E, 2.5G网口'],
             ['功耗', '6W', '10W', '25W'],
+            ['系统生态', '深度适配Windows商用生态', '深度适配Windows商用生态', '深度适配Windows商用生态'],
             ['认证', 'CE / FCC', 'CE / FCC / RoHS', 'CE / FCC / RoHS / ISO9001']
           ]
         },
         scenes: [
-          { icon: '🎬', title: '家庭影音', desc: '4K视频流畅播放，HDMI直连电视，安静无风扇或超低噪音设计。' },
-          { icon: '🏢', title: '办公应用', desc: '小巧放置显示器后，节省桌面空间，满足日常办公、视频会议需求。' },
-          { icon: '🏭', title: '工业控制', desc: '宽温设计，串口可选，适用于自动化设备、数控机床等工业场景。' },
-          { icon: '📊', title: '数字标牌', desc: '7×24小时稳定运行，支持多屏输出，适用于广告机、信息发布系统。' }
+          { icon: 'multi', title: '多开运营', desc: '小巧体积多台叠加，低功耗长时间运行，适合跨境电商工作室多账号管理。' },
+          { icon: 'office', title: '办公应用', desc: '小巧放置显示器后，节省桌面空间，满足日常办公、视频会议需求。' },
+          { icon: 'industry', title: '工业控制', desc: '宽温设计，串口可选，适用于自动化设备、数控机床等工业场景。' },
+          { icon: 'signage', title: '数字标牌', desc: '7×24小时稳定运行，支持多屏输出，适用于信息发布系统。' }
         ],
-        oem: { items: ['外观定制：尺寸、颜色、LOGO均可按需调整', '配置定制：处理器、内存、存储、接口按项目需求配置', '系统集成：预装指定操作系统和应用软件', '散热方案：风扇/无风扇方案可选', '起订量：小批量起订，具体MOQ请咨询业务'] },
+        oem: { items: ['外壳定制：颜色、材质、LOGO铭牌均可定制', '智显定制：接口扩展、存储容量、内存规格按需配置', '系统定制：预装操作系统、应用软件、启动画面', '工业版本：宽温、导轨安装、无风扇设计可选', '起订量：1台起个性化定制，30台以上享专属议价'] },
         related: ['aio', 'display', 'desktop']
       },
       display: {
         tag: '商用视算终端', series: 'Display Series', title: '商用视算终端系列',
-        summary: '高亮度、宽视角、7×24小时稳定运行。广泛应用于广告宣传、数字标牌、会议室、零售展示等商业场景，支持定制研发。',
+        summary: '高亮度、宽视角、7×24小时稳定运行。广泛应用于门店广告视显、直播间商用大屏、数字标牌等商业场景，支持定制研发。',
         highlights: [
-          { icon: '☀️', title: '500-2000 nits', subtitle: '高亮度可选' },
-          { icon: '👁️', title: '宽视角', subtitle: '178°可视角度' },
-          { icon: '⏰', title: '7×24小时', subtitle: '稳定运行' },
-          { icon: '🔧', title: '定制研发', subtitle: '全面定制服务' }
+          { icon: 'brightness', title: '500-2000 nits', subtitle: '高亮度可选' },
+          { icon: 'view', title: '宽视角', subtitle: '178度可视角度' },
+          { icon: 'time', title: '7×24小时', subtitle: '稳定运行' },
+          { icon: 'custom', title: '定制研发', subtitle: '全面定制服务' }
         ],
         specs: {
           headers: ['参数项目', '标准款', '专业款', '旗舰款'],
           rows: [
-            ['尺寸', '23.8" - 34"', '34" - 43"', '43" - 49"'],
+            ['屏幕尺寸', '23.8" - 27"', '34" - 43"', '49"'],
+            ['面板类型', '京东方BOE原厂IPS面板', '京东方BOE原厂IPS面板', '京东方BOE原厂IPS面板'],
             ['亮度', '500 nits', '700 nits', '2000 nits（高亮版）'],
             ['分辨率', 'FHD 1920×1080', 'FHD / 4K UHD', '4K UHD 3840×2160'],
             ['对比度', '1200:1', '4000:1', '5000:1'],
-            ['视角', '178°/178°', '178°/178°', '178°/178°'],
+            ['视角', '178度/178度', '178度/178度', '178度/178度'],
             ['色域', '72% NTSC', '90% DCI-P3', '95% DCI-P3'],
             ['触屏', '不支持', '可选（红外/电容）', '标配（红外触控）'],
             ['接口', 'HDMI×1, VGA×1', 'HDMI×2, DP×1', 'HDMI×2, DP×2, USB-C'],
@@ -886,44 +888,45 @@ function getDefaultData() {
           ]
         },
         scenes: [
-          { icon: '📺', title: '广告宣传', desc: '高亮度显示屏，阳光下清晰可见，支持分屏播放，远程内容管理。' },
-          { icon: '🏪', title: '零售展示', desc: '触摸交互可选，顾客可自主查询商品信息，提升购物体验。' },
-          { icon: '🏢', title: '会议室', desc: '4K高清显示，支持无线投屏，适用于企业会议室、培训室。' },
-          { icon: '📍', title: '数字标牌', desc: '7×24小时稳定运行，支持网络远程管理，降低运维成本。' }
+          { icon: 'ad', title: '门店广告视显', desc: '高亮度显示屏，阳光下清晰可见，支持分屏播放，远程内容管理。' },
+          { icon: 'live', title: '直播间商用大屏', desc: '4K高清显示，高色彩还原，适用于直播间实时画面展示与互动。' },
+          { icon: 'signage', title: '数字标牌', desc: '7×24小时稳定运行，支持网络远程管理，降低运维成本。' },
+          { icon: 'meeting', title: '会议室', desc: '4K高清显示，支持无线投屏，适用于企业会议室、培训室。' }
         ],
-        oem: { items: ['外观定制：边框、支架、颜色均可按需调整', '亮度定制：500-2000 nits 多档亮度可选', '触控定制：红外触控、电容触控、纳米触控可选', '系统定制：内置Android、Windows、信发系统可选', '起订量：小批量起订，具体MOQ请咨询业务'] },
+        oem: { items: ['尺寸定制：23.8-49英寸全尺寸按需选配', '亮度定制：室内/户外不同使用环境选配亮度', '系统定制：内置内容管理软件，预装指定系统', '外观定制：边框颜色、LOGO、底座造型均可定制', '起订量：1台起个性化定制，30台以上享专属议价'] },
         related: ['aio', 'mini', 'desktop']
       },
       desktop: {
         tag: '桌面智能显示设备', series: 'Smart Display Series', title: '桌面智能显示设备系列',
-        summary: '高性能配置，支持高度个性化定制。满足图形设计、视频渲染、工程计算等高负载专业应用需求，支持定制研发。',
+        summary: '高性能算力配置，支持高度个性化定制。顶配可搭载5090图形模组，满足渲染剪辑、多开运营、工程计算等高负载专业应用需求。',
         highlights: [
-          { icon: '💻', title: '高性能', subtitle: 'Intel Core / AMD Ryzen' },
-          { icon: '🎮', title: '独显可选', subtitle: 'NVIDIA / AMD' },
-          { icon: '🔧', title: '高度定制', subtitle: '配置自选' },
-          { icon: '🔧', title: '定制研发', subtitle: '全面定制服务' }
+          { icon: 'cpu', title: '高性能算力', subtitle: '多代桌面级处理器' },
+          { icon: 'gpu', title: '5090图形模组', subtitle: '顶配可选' },
+          { icon: 'custom', title: '高度定制', subtitle: '配置自选' },
+          { icon: 'custom', title: '定制研发', subtitle: '全面定制服务' }
         ],
         specs: {
           headers: ['参数项目', '办公款', '设计款', '工作站款'],
           rows: [
-            ['处理器', 'Intel Core i3 / i5', 'Intel Core i7 / i9', 'Intel Xeon / AMD Threadripper'],
-            ['内存', '8GB - 16GB DDR4', '16GB - 32GB DDR5', '32GB - 128GB ECC'],
-            ['显卡', '集显 / GT710', 'RTX 4060 / 4070', 'RTX 4090 / A5000'],
+            ['核心算力', '中端桌面级处理器', '高性能桌面级处理器', '旗舰桌面级处理器'],
+            ['内存', '16GB DDR4', '32GB DDR5', '64GB - 128GB ECC'],
+            ['图形模组', '集成图形', '中端独立图形模组', '5090图形模组（顶配）'],
             ['存储', '256GB SSD + 1TB HDD', '512GB - 1TB SSD', '2TB SSD + 4TB HDD'],
-            ['主板', 'Intel B系列', 'Intel Z系列 / AMD X系列', 'Intel W系列 / AMD TRX40'],
+            ['主板规格', '主流商用主板', '高性能主板', '工作站级主板'],
             ['电源', '300W - 450W', '550W - 750W', '850W - 1200W'],
             ['机箱', '微型塔式', '中塔式', '全塔式 / 静音机箱'],
             ['扩展槽', 'PCIe×4', 'PCIe×7', 'PCIe×10'],
+            ['系统生态', '深度适配Windows商用生态', '深度适配Windows商用生态', '深度适配Windows商用生态'],
             ['认证', 'CE / FCC', 'CE / FCC / RoHS', 'CE / FCC / RoHS / ISV认证']
           ]
         },
         scenes: [
-          { icon: '🏢', title: '办公应用', desc: '稳定可靠的办公平台，支持多任务处理，满足企业日常办公需求。' },
-          { icon: '🎨', title: '图形设计', desc: '高性能CPU+独立显卡，色彩校准显示屏，适用于平面设计、视频剪辑。' },
-          { icon: '🏭', title: '工程计算', desc: '多核CPU+大内存，支持ECC校验，适用于CAD、仿真、科学计算。' },
-          { icon: '🎮', title: '游戏娱乐', desc: '高端显卡+高速CPU，支持4K游戏，适用于游戏厅、网吧。' }
+          { icon: 'office', title: '企业办公', desc: '稳定可靠的办公平台，支持多任务处理，满足企业日常办公需求。' },
+          { icon: 'render', title: '渲染剪辑', desc: '高性能算力+独立图形模组，色彩校准显示屏，适用于视频剪辑、特效渲染。' },
+          { icon: 'industry', title: '工程计算', desc: '多核算力+大内存，支持ECC校验，适用于CAD、仿真、科学计算。' },
+          { icon: 'multi', title: '多开运营', desc: '高性能配置支持多开运行，适合跨境电商工作室、直播运营等场景。' }
         ],
-        oem: { items: ['外观定制：机箱颜色、LOGO、尺寸比例均可按需调整', '配置定制：处理器、内存、显卡、存储按项目需求配置', '系统定制：预装指定操作系统和应用软件', '静音方案：静音机箱、被动散热可选', '起订量：小批量起订，具体MOQ请咨询业务'] },
+        oem: { items: ['智显定制：核心算力、内存、图形模组、存储、接口扩展全面可配', '机箱定制：颜色、面板LOGO、多规格机箱可选', '系统定制：预装操作系统、驱动包、企业软件', '静音方案：静音机箱、被动散热可选', '起订量：1台起个性化定制，30台以上享专属议价'] },
         related: ['aio', 'mini', 'display']
       }
     },
