@@ -105,7 +105,7 @@ function updateProductDetail(data, type) {
     }
   }
 
-  // 更新 OEM 信息
+  // 更新定制信息
   if (pd.oem && pd.oem.items) {
     const oemList = document.querySelector('.oem-list');
     if (oemList) {
