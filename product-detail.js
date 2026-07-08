@@ -1,6 +1,7 @@
 /* ===========================
    产品详情页 JS
    product-detail.js
+   交互逻辑 + 非破坏式数据同步
    =========================== */
 
 /* ---------- Header 滚动效果 ---------- */
@@ -93,37 +94,23 @@ function initMobileMenu() {
   });
 }
 
-/* ---------- 初始化 ---------- */
-document.addEventListener('DOMContentLoaded', () => {
-  initAnimations();
-  initMobileMenu();
-
-  /* 注入卡片动画 CSS */
-  const style = document.createElement('style');
-  style.textContent = `@keyframes fadeInCard { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: translateY(0); } }`;
-  document.head.appendChild(style);
-});
 /* ============================================================
-   product-detail-loader.js - 产品详情页动态加载
+   非破坏式数据同步
+   仅同步文本字段（标题 / 面包屑 / 标签 / 系列 / 摘要），
+   不覆盖已含 SVG 的 highlights / specs / scenes，以保护页面视觉设计。
    ============================================================ */
-
 const PDETAIL_DATA_URL = 'site-data.json';
 let pdDetailData = null;
 
 /* 获取当前产品类型 */
 function getProductType() {
-  // 从 URL 参数获取，如 ?type=aio
   const params = new URLSearchParams(window.location.search);
   if (params.has('type')) return params.get('type');
 
-  // 从文件名推断
   const path = window.location.pathname;
-  if (path.includes('aio')) return 'aio';
   if (path.includes('mini')) return 'mini';
   if (path.includes('display')) return 'display';
-  if (path.includes('desktop') || path.includes('desktop')) return 'desktop';
-
-  // 默认
+  if (path.includes('desktop')) return 'desktop';
   return 'aio';
 }
 
@@ -135,103 +122,55 @@ async function loadProductDetailData() {
     pdDetailData = await resp.json();
     return pdDetailData;
   } catch (e) {
-    console.warn('[ProductDetail] 加载失败，使用默认值：', e.message);
+    console.warn('[ProductDetail] 数据加载失败，使用页面默认内容：', e.message);
     return null;
   }
 }
 
-/* 更新产品详情页 */
-function updateProductDetail(data, type) {
+/* 非破坏式同步：仅更新文本节点，不重渲染含 SVG 的区块 */
+function syncProductDetail(data, type) {
   if (!data || !data.productDetails || !data.productDetails[type]) return;
   const pd = data.productDetails[type];
 
-  // 更新标题
+  // 页面标题
   const titleEl = document.querySelector('title');
   if (titleEl && pd.title) {
     titleEl.textContent = pd.title + ' - 广州龙到网络科技有限公司';
   }
 
-  // 更新面包屑
+  // 面包屑
   const bcCur = document.querySelector('.bc-cur');
   if (bcCur && pd.title) bcCur.textContent = pd.title;
 
-  // 更新产品头部信息
+  // 产品头部文本（不触碰含 SVG 的 highlights 区块）
   const tagEl = document.querySelector('.product-tag');
   const seriesEl = document.querySelector('.pd-series');
   const titleH1 = document.querySelector('.pd-title');
-  const titleH1 = document.querySelector('.pd-title');
+  const summaryEl = document.querySelector('.pd-summary');
 
   if (tagEl && pd.tag) tagEl.textContent = pd.tag;
   if (seriesEl && pd.series) seriesEl.textContent = pd.series;
   if (titleH1 && pd.title) titleH1.textContent = pd.title;
-
-  // 产品详情介绍图片
-  const detailImgEl = document.querySelector('.pd-detail-image');
-  if (detailImgEl) {
-    if (pd.detailImage) {
-      detailImgEl.innerHTML = `<img src="${pd.detailImage}" alt="产品详情介绍" style="max-width:100%;border-radius:8px;" />`;
-    } else {
-      detailImgEl.innerHTML = '';
-    }
-  }
-
-  // 更新高亮信息
-  if (pd.highlights) {
-    const hlContainer = document.querySelector('.pd-highlights');
-    if (hlContainer) {
-      hlContainer.innerHTML = pd.highlights.map(h => `
-        <div class="pd-hl">
-          <span class="hl-icon">${h.icon}</span>
-          <div><strong>${h.title}</strong><span>${h.subtitle}</span></div>
-        </div>
-      `).join('');
-    }
-  }
-
-  // 产品规格参数图片
-  const specImgEl = document.querySelector('.pd-spec-image');
-  if (specImgEl) {
-    if (pd.specImage) {
-      specImgEl.innerHTML = `<img src="${pd.specImage}" alt="产品规格参数" style="max-width:100%;border-radius:8px;" />`;
-    } else {
-      specImgEl.innerHTML = '';
-    }
-  }
-
-  // 应用场景图片
-  const sceneImgEl = document.querySelector('.pd-scene-image');
-  if (sceneImgEl) {
-    if (pd.sceneImage) {
-      sceneImgEl.innerHTML = `<img src="${pd.sceneImage}" alt="应用场景" style="max-width:100%;border-radius:8px;" />`;
-    } else {
-      sceneImgEl.innerHTML = '';
-    }
-  }
-
-  // 更新定制信息
-  if (pd.oem && pd.oem.items) {
-    const oemList = document.querySelector('.oem-list');
-    if (oemList) {
-      oemList.innerHTML = pd.oem.items.map(item => 
-        `<li>${item}</li>`
-      ).join('');
-    }
-  }
+  if (summaryEl && pd.summary) summaryEl.textContent = pd.summary;
 }
 
-/* 初始化 */
 async function initProductDetail() {
   const type = getProductType();
   const data = await loadProductDetailData();
   if (data) {
-    updateProductDetail(data, type);
-    console.log('[ProductDetail] 已加载 ' + type + ' 的详情数据');
+    syncProductDetail(data, type);
+    console.log('[ProductDetail] 已同步 ' + type + ' 的文本数据');
   }
 }
 
-/* 自动初始化 */
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initProductDetail);
-} else {
+/* ---------- 初始化 ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  initAnimations();
+  initMobileMenu();
   initProductDetail();
-}
+
+  /* 注入卡片动画 CSS */
+  const style = document.createElement('style');
+  style.textContent = `@keyframes fadeInCard { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: translateY(0); } }`;
+  document.head.appendChild(style);
+});
