@@ -112,7 +112,7 @@ function updateHomepage(data) {
     }
   }
 
-  // OEM/ODM
+  // 定制研发
   if (hp.oem) {
     const oemTitle = document.querySelector('.oem-content h2');
     const oemDesc = document.querySelector('.oem-content > p');
